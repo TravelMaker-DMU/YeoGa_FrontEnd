@@ -1,0 +1,131 @@
+.Login {
+    /* display: flex; */
+    height: 100vh;
+  }
+  
+  .background-image {
+    flex: 1;
+    background-image: url('https://cdn.pixabay.com/photo/2024/02/09/13/03/beach-8563083_1280.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: 600px;
+    position: relative;
+    z-index: 0;
+  }
+  .content {
+    width: 30%;
+    /* border: solid 1px black; */
+    margin-right: 500px;
+    text-align: left;
+  }
+  .content h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+  }
+  
+  .content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .login-form {
+    width: 500px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    position: absolute;
+    margin-left: 900px;
+    
+ 
+  }
+  
+  .login-form h2 {
+ 
+    color: black;
+  }
+  
+  .input-group {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .Loginbutton{
+    
+    width: 110%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .social-login {
+    text-align: center;
+    margin-top: 20px;
+    color: black;
+  }
+
+  .google {
+    width: 25px;
+    height: 25px;
+    /* border: solid 3px black; */
+  }
+  .kakao {
+    width: 35px;
+    height: 28px;
+    /* border: solid 3px black; */
+  }
+  .facebook {
+    width: 30px;
+    height: 30px;
+    /* border: solid 3px black; */
+  }
+  
+  .social-icons img {
+  
+    margin: 0 10px;
+    cursor: pointer;
+    /* width: 25px;
+    height: 25px; */
+  }
+  
+  .social-icons img:hover {
+    opacity: 0.7;
+  }
+  
+  .login-form p {
+    margin-top: 15px;
+    color: black;
+  }
+  
+  .login-form a {
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .login-form a:hover {
+    text-decoration: underline;
+  }
