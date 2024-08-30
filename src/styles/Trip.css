@@ -1,0 +1,88 @@
+/* General Page Styling */
+.trip-page {
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+
+.nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+}
+
+
+
+
+.main-content {
+    display: flex;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.filters {
+    width: 20%;
+    border-right: 1px solid #ccc;
+    padding-right: 20px;
+}
+
+.filter-category {
+    margin-bottom: 20px;
+}
+
+.filter-category h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.filter-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.filter-category li {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.filter-category input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.hotels {
+    width: 80%;
+    padding-left: 20px;
+}
+
+.hotel-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.hotel-image-placeholder {
+    width: 23%;
+    height: 150px;
+    background-color: #ccc;
+}
+
+.hotel-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.hotel-card {
+    display: flex;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    
+}
