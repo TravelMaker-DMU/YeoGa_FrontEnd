@@ -56,13 +56,15 @@
     margin-right: 10px;
 }
 
-.main-content {
+
+/* 현재 trip 페이지 css랑 겹치기에 수정이 필요 */
+/* .main-content {
     flex: 1;
     background-color: #f0f0f5;
     padding: 20px;
     display: flex;
     flex-direction: column;
-}
+} */
 
 .calendar-section {
     text-align: center;

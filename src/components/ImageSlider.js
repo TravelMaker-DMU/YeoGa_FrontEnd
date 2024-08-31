@@ -10,22 +10,24 @@ function ImageSlider() {
     "https://cdn.pixabay.com/photo/2019/08/14/10/34/beach-4405357_1280.jpg"
   ];
 
+  // Duplicate the first and last images for smooth looping
+  const imagesLoop = [images[images.length - 1], ...images, images[0]];
+
   useEffect(() => {
     const interval = setInterval(() => {
-      // Disable transition to reset position
       if (currentImageIndex === images.length) {
         setTransitionEnabled(false);
-        setCurrentImageIndex(1); // Reset to second image for a seamless loop
+        setCurrentImageIndex(1); // Reset to the second image to create a seamless loop
       } else {
         setTransitionEnabled(true);
-        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+        setCurrentImageIndex((prevIndex) => prevIndex + 1);
       }
     }, 3000); // Change image every 3 seconds
 
     return () => clearInterval(interval); // Clean up the interval on component unmount
   }, [currentImageIndex, images.length]);
 
-  // To handle the instant jump without transition
+  // Handle the end of the transition to reset the state
   const handleTransitionEnd = () => {
     if (!transitionEnabled) {
       setTransitionEnabled(true);
@@ -35,7 +37,7 @@ function ImageSlider() {
   return (
     <div
       className="image-slider"
-      style={{ backgroundImage: `url(${images[currentImageIndex % images.length]})` }} // Change background based on current image index
+      style={{ backgroundImage: `url(${imagesLoop[currentImageIndex]})` }} // Set the background based on the current index
     >
       <div className="overlay">
         <h1>travel site</h1>
@@ -48,7 +50,7 @@ function ImageSlider() {
           onTransitionEnd={handleTransitionEnd}
           style={{ transform: `translateX(-${currentImageIndex * 270}px)` }} // Adjust sliding effect
         >
-          {images.map((image, index) => (
+          {imagesLoop.map((image, index) => (
             <div className={`images${index + 1}`} key={index}>
               <img src={image} alt={`Image ${index + 1}`} />
             </div>

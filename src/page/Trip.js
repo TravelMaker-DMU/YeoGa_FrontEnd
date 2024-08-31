@@ -6,7 +6,7 @@ import '../styles/Trip.css';
 const Trip = () => {
     return (
         <div className="trip-page">
-            <Navbar />
+            <Navbar/>
             <div className='trip-image'>
                 {/* Placeholder for a trip image or banner */}
             </div>
@@ -76,7 +76,7 @@ const Trip = () => {
                                 <input type="checkbox" id="5stars" />
                                 <label htmlFor="5stars">5성급</label>
                             </li>
-                            <li>
+                            <li> 
                                 <input type="checkbox" id="4stars" />
                                 <label htmlFor="4stars">4성급</label>
                             </li>
@@ -121,7 +121,7 @@ const Trip = () => {
                     </div>
                 </div>
 
-                {/* Main Content Section */}
+                
                 <div className="hotels">
                     <h2>BEST HOTEL</h2>
                     <div className="hotel-grid">
@@ -141,6 +141,7 @@ const Trip = () => {
                                 <p>일출과 바다 전망이 아름다운 호텔.</p>
                             </div>
                         </div>
+
                         {/* Add more hotel cards as needed */}
                         <div className="hotel-card">
                             <img src="https://via.placeholder.com/150" alt="Hotel" className="hotel-image" />
@@ -150,6 +151,16 @@ const Trip = () => {
                                 <p>일출과 바다 전망이 아름다운 호텔.</p>
                             </div>
                         </div>
+
+                        <div className="hotel-card">
+                            <img src="https://via.placeholder.com/150" alt="Hotel" className="hotel-image" />
+                            <div className="hotel-info">
+                                <h4>3. BEST HOTEL</h4>
+                                <p>강원도 속초시 조양동</p>
+                                <p>일출과 바다 전망이 아름다운 호텔.</p>
+                            </div>
+                        </div>
+                        
                         <div className="hotel-card">
                             <img src="https://via.placeholder.com/150" alt="Hotel" className="hotel-image" />
                             <div className="hotel-info">
