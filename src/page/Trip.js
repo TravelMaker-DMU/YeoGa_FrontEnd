@@ -8,7 +8,7 @@ const Trip = () => {
         <div className="trip-page">
             <Navbar/>
             <div className='trip-image'>
-                {/* Placeholder for a trip image or banner */}
+                {/* Placeholder   for a trip image or banner */}
             </div>
             <SearchBar />
 
