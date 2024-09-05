@@ -20,7 +20,7 @@
 
 /* Filter section styling */
 .filters {
-    flex: 1; /* Allows filters to adjust size based on available space */
+    flex: 0.5; /* Allows filters to adjust size based on available space */
     width: 20%;
     border-right: 1px solid #ccc;
     padding-right: 20px;
