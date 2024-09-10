@@ -4,7 +4,7 @@ import '../styles/User.css';
 const User = () => {
     return (
         <div className="user-page">
-            {/* Sidebar Section */}
+           
             <div className="sidebar">
                 <div className="sidebar-header">
                     <div className="user-profile">
@@ -25,8 +25,8 @@ const User = () => {
                 </nav>
             </div>
 
-            {/* Main Content Section */}
-            <div className="main-content">
+          
+            <div className="calendar-content">
                 <div className="calendar-section">
                     <h2>JUNE</h2>
                     <table className="calendar">
@@ -90,14 +90,14 @@ const User = () => {
                         </tbody>
                     </table>
                 </div>
-                <div className="info-section">
+            </div>
+            <div className="info-section">
                     <div className="profile-placeholder"></div>
                     <div className="info-details">
                         <div className="info-item"></div>
                         <div className="info-item"></div>
                     </div>
                 </div>
-            </div>
         </div>
     );
 };

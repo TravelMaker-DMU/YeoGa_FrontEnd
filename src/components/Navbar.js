@@ -62,7 +62,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             )}
-            <button className="login-btn" onClick={handleLoginClick}>LOGIN</button>
+            <button className="login-btn" onClick={handleLoginClick}>로그인</button>
         </nav>
     );
 };

@@ -5,11 +5,13 @@ import Home from './page/Home';
 import Login from './page/Login';
 import Trip from './page/Trip';
 import User from './page/User';
+import Join from './page/JoinPage/Join';
 import Test1 from './page/Test1';
+import JoinStep2 from './page/JoinPage/JoinStep2';
 import './App.css';
+import WeatherApp from './page/WeatherPage/WeatherApp';
 
 const App = () => {
-
 
     return (
         <Router>
@@ -19,7 +21,11 @@ const App = () => {
                 <Route path='/Login' element={<Login />} />
                 <Route path='/Trip' element={<Trip />} />
                 <Route path='/User' element={<User />} />
+                <Route path='/Join' element={<Join />} />
+                <Route path='/Join/step2' element={<JoinStep2 />} />
+                <Route path='/Weather' element={<WeatherApp />} />
                 <Route path='/Test1' element={<Test1 />} />
+
             </Routes>
         </Router>
     );
