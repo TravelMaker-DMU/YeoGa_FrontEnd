@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import SearchBar from '../components/SearchBar';
 import '../styles/Trip.css';
 
@@ -173,6 +174,7 @@ const Trip = () => {
                     </div>
                 </div>
             </div>
+            {/* <Footer/> */}
         </div>
     );
 };

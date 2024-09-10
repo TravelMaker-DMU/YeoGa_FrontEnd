@@ -7,7 +7,6 @@
   min-height: 100vh;
   /* background-color: red; */
   width: 100%; 
- 
   margin: 0 auto;
 }
 
@@ -76,7 +75,7 @@
   justify-content: center;
   gap: 10px;
   width: 100%;
-  border: solid 1px ;
+  /* border: solid 1px ; */
 }
 
 .social-icons img {
@@ -86,12 +85,15 @@
   /* background-color: red; */
 }
 
-p {
-  margin-top: 20px;
-}
-.login-id-password {
+.login-box {
   width: 100%;
   text-align: left;
+  /* background-color: red; */
+  display: flex;
+}
+
+.login-pass, .login-join {
+  padding-left: 5px;
 }
 
 .facebook-box {
@@ -100,4 +102,26 @@ p {
 }
 .facebook {
   float: left;
+  padding-top: 10px;
+}
+
+.facebook-text p {
+  color: white;
+  font-weight: bold;
+  margin-right: 20px;
+}
+.kakao-box {
+  width: 50%;
+  background-color: yellow;
+}
+.kakao {
+  float: left;
+  padding-top: 10px;
+
+}
+
+.kakao-text p {
+  color: white;
+  font-weight: bold;
+  margin-right: 30px;
 }

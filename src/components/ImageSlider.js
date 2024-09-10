@@ -10,14 +10,13 @@ function ImageSlider() {
     "https://cdn.pixabay.com/photo/2019/08/14/10/34/beach-4405357_1280.jpg"
   ];
 
-  // Duplicate the first and last images for smooth looping
   const imagesLoop = [images[images.length - 1], ...images, images[0]];
 
   useEffect(() => {
     const interval = setInterval(() => {
       if (currentImageIndex === images.length) {
         setTransitionEnabled(false);
-        setCurrentImageIndex(1); // Reset to the second image to create a seamless loop
+        setCurrentImageIndex(1);
       } else {
         setTransitionEnabled(true);
         setCurrentImageIndex((prevIndex) => prevIndex + 1);

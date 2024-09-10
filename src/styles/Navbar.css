@@ -13,6 +13,7 @@
   justify-content: space-between;
   height: 30px;
   /* margin: 0 auto; */
+ 
 
 }
 
@@ -38,6 +39,7 @@
 .nav-links li a {
   text-decoration: none;
   color: white;
+  
 }
 
 /* 서브메뉴 컨테이너 스타일 */
