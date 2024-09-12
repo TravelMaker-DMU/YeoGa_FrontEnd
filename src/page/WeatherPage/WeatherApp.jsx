@@ -11,7 +11,8 @@ const WeatherApp = () => {
   const fetchWeather = async () => {
     try {
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-      /* console.log(`Fetching weather data from: ${url}`); */
+      // const url = `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=${city}&appid=${apiKey}`;
+      console.log(`Fetching weather data from: ${url}`); 
       
 
       const response = await axios.get(url);
@@ -55,10 +56,14 @@ const WeatherApp = () => {
           <p>Weather: {weatherData.weather[0].description}</p>
           <p>Humidity: {weatherData.main.humidity}%</p>
           <p>Wind Speed: {weatherData.wind.speed} m/s</p>
+          <p> {weatherData.id}</p>
+
+
+          {/* <p> {weatherData.main.temp}</p> */}
         </div>
       )}
     </div>
   );
 };
-
+  
 export default WeatherApp;
