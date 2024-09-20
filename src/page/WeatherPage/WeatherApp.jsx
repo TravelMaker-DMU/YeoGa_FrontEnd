@@ -11,6 +11,11 @@ const WeatherApp = () => {
   const fetchWeather = async () => {
     try {
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+      
+      // 기상청 일반 API키  :  7qIlmVuNGV7pzIFYHRANmtd94tO1QGcC7a3hJRjj7lEshFvVHSRyw9AR9IhSHMoHYz2VV7uif6Wf5u517bNjlg%3D%3D
+
+
       // const url = `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=${city}&appid=${apiKey}`;
       console.log(`Fetching weather data from: ${url}`); 
       

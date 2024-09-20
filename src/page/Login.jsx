@@ -6,7 +6,7 @@ import googleicon from "../images/icon/google-icon.png";
 import kakaoicon from "../images/icon/kakao-icon.png";
 import facebookicon from "../images/icon/facebook.png";
 
-import logo from  '../images/178555216.png';
+import logo from  '../images/yega-logo.png';
 import { navigate, useNavigate } from "react-router-dom";
 
 
