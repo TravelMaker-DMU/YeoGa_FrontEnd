@@ -14,11 +14,11 @@ const Join  = () => {
 <div className="Join">
 
    <div className="Join-title">
-      <h2>회원가입</h2>
+      <h2 className="Join-title-text">회원가입</h2>
       <p>회원가입을 통해 홈페이지의 다양한 서비스를 이용하세요</p>
       </div>
 
-      <div className="step-all">
+      <div className="Join-step-all">
         <div className="step active">1 약관동의</div>
         <div className="step">2 정보입력</div>
         <div className="step">3 가입완료</div>
@@ -26,8 +26,8 @@ const Join  = () => {
       
       
 
-      <div className="terms-section">  
-      <div className="terms-title">  
+      <div className="Join-terms-section">  
+      <div className="Join-terms-title">  
          <p>[여행 서비스 이용 약관]</p>
          </div>
         <div className="terms-box">
@@ -56,14 +56,14 @@ const Join  = () => {
           <p>2. 회사는 서비스의 내용을 변경할 수 있으며, 변경 사항은 사전에 공지합니다.</p>
         </div>
 
-        <div className="checkbox">
+        <div className="Join-checkbox">
           <input 
             type="checkbox" 
             id="agree" 
             checked={agree} 
             onChange={handleAgreeChange}
           />
-          <label htmlFor="agree">약관동의(필수)</label>
+          <label className="Join-label" htmlFor="agree">약관동의(필수)</label>
         </div>
       </div>
 
@@ -80,19 +80,16 @@ const Join  = () => {
             <li>회원제 서비스 이용에 따른 본인 확인, 회원 식별 및 가입 의사 확인</li>
             <li>서비스 제공을 위한 고객 관리</li>
          </ul>
-         <p></p>
-         <p></p>
-         <p></p>
         </div>
 
-        <div className="checkbox">
+        <div className="Join-checkbox">
           <input 
             type="checkbox" 
             id="agree" 
             checked={agree} 
             onChange={handleAgreeChange}
           />
-          <label htmlFor="agree">약관동의(필수)</label>
+          <label className="Join-label" htmlFor="agree">약관동의(필수)</label>
         </div>
 
       </div>

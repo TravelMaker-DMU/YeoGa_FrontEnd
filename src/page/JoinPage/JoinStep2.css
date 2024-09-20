@@ -1,75 +1,54 @@
-.join-container {
-    width: 400px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .join-form {
-    text-align: left;
-  }
-  
-  .required-info {
-    color: red;
-    font-size: 12px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  input {
-    width: calc(100% - 10px);
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .english-name-group input {
-    width: calc(50% - 10px);
-    margin-right: 10px;
-  }
-  
-  .user-id-group {
-    display: flex;
-    align-items: center;
-  }
-  
-  .check-btn {
-    margin-left: 10px;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .error-input {
-    border: 1px solid red;
-  }
-  
-  .error-message {
-    color: red;
-    font-size: 12px;
-  }
-  
-  .submit-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .submit-btn:hover {
-    background-color: #218838;
-  }
-  
+.Join-Step2 {
+  width: 100%;
+  border: solid 3px black;
+}
+
+.Join-Step2-title-container{
+  border: solid 3px red;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.form-container {
+
+  width: 40%;
+  margin-left: 30%;
+}
+
+
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="text"]:nth-of-type(2) {
+  margin-left: 10px;
+}
+
+.check-button {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  background-color: #f2f2f2;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.check-button:hover {
+  background-color: #e6e6e6;
+}

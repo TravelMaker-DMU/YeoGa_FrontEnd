@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 import { useNavigate } from 'react-router-dom';
+import logo from  '../images/yega-logo.png';
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -27,7 +28,10 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
-            <div className="logo">LOGO</div>
+            <div className="logo">   
+            {/* <img src={logo} alt="logo" className="Home-logo"/> */}
+            
+            </div>
             <ul className="nav-links"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
