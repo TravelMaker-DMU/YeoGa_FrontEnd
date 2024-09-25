@@ -29,7 +29,7 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="logo">   
-            {/* <img src={logo} alt="logo" className="Home-logo"/> */}
+             <img src={logo} alt="logo" className="Home-logo"/> 
             
             </div>
             <ul className="nav-links"

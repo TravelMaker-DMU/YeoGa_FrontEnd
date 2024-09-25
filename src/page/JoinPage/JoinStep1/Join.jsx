@@ -1,21 +1,29 @@
 import React, {useState} from "react";
-import Footer from "../../components/Footer";
-import '../JoinPage/Join.css';
+import { useNavigate } from "react-router-dom";
+import Footer from "../../../components/Footer/Footer";
+import './JoinStep1.css';
 
 const Join  = () => {
 
    const [agree, setAgree] = useState(false);
-
+   const navigate = useNavigate();
+   
    const handleAgreeChange = (e) => {
      setAgree(e.target.checked);
    };
+
+   const nextJoinStep2 = () => {
+    if (agree) {
+      navigate('/join/step2'); // "/join/step2" 페이지로 이동
+    }
+  };
 
    return(
 <div className="Join">
 
    <div className="Join-title">
       <h2 className="Join-title-text">회원가입</h2>
-      <p>회원가입을 통해 홈페이지의 다양한 서비스를 이용하세요</p>
+      <p>약관동의</p>
       </div>
 
       <div className="Join-step-all">
@@ -95,7 +103,7 @@ const Join  = () => {
       </div>
       
 
-      <button className="next-button" disabled={!agree}>
+      <button className="next-button" disabled={!agree} onClick={nextJoinStep2}>
         다음
       </button>
       <Footer/>

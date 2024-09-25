@@ -4,7 +4,7 @@ import ImageSlider from '../components/ImageSlider';
 import SearchBar from '../components/SearchBar';
 import GridLayout from '../components/GridLayout';
 import TripCourse from '../components/TripCourse';
-import Footer from '../components/Footer';
+import Footer from '../components/Footer/Footer';
 
 
 

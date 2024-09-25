@@ -7,9 +7,9 @@ import Login from './page/Login';
 import Trip from './page/Trip';
 import User from './page/User';
 import UserFAQ from './page/UserFAQ/UserFAQ';
-import Join from './page/JoinPage/Join';
 import Test1 from './page/Test1';
-import JoinStep2 from './page/JoinPage/JoinStep2';
+import Join from './page/JoinPage/JoinStep1/Join';
+import JoinStep2 from './page/JoinPage/JoinStep2/JoinStep2';
 import WeatherApp from './page/WeatherPage/WeatherApp';
 
 const App = () => {

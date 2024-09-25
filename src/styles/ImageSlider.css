@@ -59,7 +59,7 @@
   margin-left: auto; 
   margin-right: 20px; 
   z-index: 2;
-  border: solid 3px black;
+  /* border: solid 3px black; */
 }
 
 .slider-container {
