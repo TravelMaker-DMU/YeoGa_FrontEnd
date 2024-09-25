@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/ImageSlider.css';
+import seoulmainimg from "../images/seoul-main-img.jpg";
+
 
 function ImageSlider() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
 
   const images = [
-    "/mnt/data/image.png", // Your uploaded image
     "https://cdn.pixabay.com/photo/2019/08/14/10/34/beach-4405357_1280.jpg",
     "https://media.istockphoto.com/id/1083573614/ko/%EC%82%AC%EC%A7%84/%ED%95%B4%EC%95%88-%EC%A0%88%EB%B2%BD-vd702%EC%9D%98-%EB%B0%98%EC%98%81.webp?s=2048x2048&w=is&k=20&c=0alpDoxr2g4W3INmO2ChZaULCnneSfCd8eiXH8dFAI8=",
     "https://cdn.pixabay.com/photo/2019/08/14/10/34/beach-4405357_1280.jpg" // Additional image for 4th slot
   ];
 
-  // Create a looped version of the images array with the first image repeating after the last
+  // Create a looped version of the images arxray with the first image repeating after the last
   const imagesLoop = [...images, images[0]];
 
   useEffect(() => {

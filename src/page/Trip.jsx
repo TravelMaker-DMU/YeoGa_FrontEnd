@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Footer from '../components/Footer/Footer';
 import SearchBar from '../components/SearchBar';
 import '../styles/Trip.css';
 
