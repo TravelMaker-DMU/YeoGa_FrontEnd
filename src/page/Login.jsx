@@ -14,22 +14,27 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // 폼 제출 시 페이지 새로고침 방지
-  
+    e.preventDefault(); // 폼 제출 시 페이지 새로고침 방지  
+    
+    const apiUrl = 'https://port-0-yeoga-backend-m1hgzlk8a26c4004.sel4.cloudtype.app';
+ 
     try {
-      const response = await fetch('http://localhost:8080/login', { // 백엔드 URL 수정 필요 시 변경
+      // const token = localStorage.getItem(token);
+      const response = await fetch(`${apiUrl}/login`, { 
         method: 'POST',
+        mode: 'cors',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username: username, password: password }), // 요청 데이터
+        body: JSON.stringify({ username, password }),
+        credentials: 'include',
       });
-  
+      
       console.log(response); // 응답 상태 확인
       if (response.ok) {
          const data = await response.json();
          const token = data.token; 
-         console.log('Token:', token); // 토큰 확인
+         console.log('token:', token); // 토큰 확인
          localStorage.setItem('token', token); // 토큰 저장
          alert('로그인 성공!');
          navigate('/'); 
@@ -40,8 +45,8 @@ const Login = () => {
       }
     } catch (error) {
       console.error('로그인 요청 중 오류 발생:', error);
-      alert('로그인 요청 중 오류가 발생했습니다.');
-    }
+      alert('로그인 요청 중 오류가 발생했습니다.'); 
+  }
 };
 
   
