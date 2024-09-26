@@ -9,6 +9,7 @@ function JoinStep2() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [birthdate, setBirthdate] = useState('');
+  const [tel, setTel] = useState('');
 
   const navigate = useNavigate();
 
@@ -33,17 +34,19 @@ function JoinStep2() {
     formData.append('username', username);
     formData.append('password', password);
     for (let pair of formData.entries()) {
-      console.log(pair[0]+ ', ' + pair[1]); 
+      // console.log(pair[0]+ ', ' + pair[1]); 
     }
-  
-    try {
-      const token = localStorage.getItem('string'); 
 
-      const response = await fetch('/join', {
+    const apiUrl = 'https://port-0-yeoga-backend-m1hgzlk8a26c4004.sel4.cloudtype.app';  
+
+    try {
+      // const token = localStorage.getItem('string'); 
+
+      const response = await fetch(`${apiUrl}/join`, {
         method: 'POST', 
         credentials: 'include',
         headers: {
-          'Authorization': `Bearer ${token}`, // 액세스 토큰을 헤더에 추가
+          // 'Authorization': `Bearer ${token}`, 
         },
         body: formData, 
       });
@@ -134,7 +137,7 @@ function JoinStep2() {
             required
           />
         </fieldset>
-            {/* 아이디 입력 필드 */}
+            {/* 생년월일 입력 필드 */}
             <fieldset className="form-group">
           <label htmlFor="birthdate">생년월일 *</label>
           <input
@@ -147,6 +150,22 @@ function JoinStep2() {
             required
           />
         </fieldset>
+
+          {/* 전화번호 입력 필드 */}
+          <fieldset className="form-group">
+          <label htmlFor="birthdate">전화번호 *</label>
+          <input
+            type="text"
+            id="tel"
+            name="tel"
+            value={tel}
+            onChange={(e) => setBirthdate(e.target.value)}
+            placeholder="010-0000-0000"
+            required
+          />
+        </fieldset>
+        
+        
         <div className='next-button2-container'>
       <button type="submit" className='prev-button2' onClick={prevclick}>
           이전

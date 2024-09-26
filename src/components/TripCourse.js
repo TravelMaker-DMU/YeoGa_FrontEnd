@@ -23,6 +23,7 @@ const cardData = [
         title: 'FOOD',
         description: 'a nationwide tour of good restaurants'
     },
+    
     {
         image: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2FMjAxOTA4MTlfMTMz%2FMDAxNTY2MTk0ODY2NTEw.Znk-_Ykdq6e_LJ73nbkC30s5FMmV_4gpMLFGAQ63Zf8g.Wh4ykH7OP0lNH8GVNibM2Yl83-9MYaKPAG176TYY3Cwg.JPEG%2FIiUNoBCh9LHxAy0hJGQOtJfZRPL0.jpg&type=sc960_832',
         title: 'FOOD',
