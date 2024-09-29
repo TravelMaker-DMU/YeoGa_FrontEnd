@@ -1,0 +1,75 @@
+/* Styles for the FAQ Page */
+.User-FAQ-Page {
+    display: flex; 
+    font-family: Arial, sans-serif;
+}
+
+.User-FAQ-container {
+    width: 60%;
+    
+    
+}
+.User-FAQ-title {
+    text-align: center;
+    padding-left: 50px;
+    margin-bottom: 5%;
+}
+
+.FAQ-table {
+    padding: 10px;
+}
+.FAQ-table table {
+   
+    width: 100%;
+    border-collapse: collapse;
+    
+    
+    
+}
+
+.FAQ-table th, .FAQ-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.FAQ-table th {
+    background-color: #f2f2f2;
+}
+
+.FAQ-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.User-FAQ-right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #5A5ABC;
+    padding: 20px;
+    
+  
+}
+
+
+.image-placeholder {
+    height: 150px;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+
+.text-placeholder {
+    height: 50px;
+    background-color: #cfcfcf;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+
+.extra-placeholder {
+    height: 100px;
+    background-color: #bfbfbf;
+    border-radius: 5px;
+}   
