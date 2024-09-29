@@ -5,7 +5,7 @@ import '../styles/Login.css';
 import googleicon from "../images/icon/google-icon.png";
 import kakaoicon from "../images/icon/kakao-icon.png";
 import facebookicon from "../images/icon/facebook.png";
-import logo from  '../images/yega-logo.png';
+import logo from '../images/yega-logo.png';
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -15,41 +15,52 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault(); // 폼 제출 시 페이지 새로고침 방지  
-    
+
     const apiUrl = 'https://port-0-yeoga-backend-m1hgzlk8a26c4004.sel4.cloudtype.app';
- 
+
     try {
-      // const token = localStorage.getItem(token);
-      const response = await fetch(`${apiUrl}/login`, { 
+      const storedToken = localStorage.getItem('token'); // 'string' 대신 'token' 사용
+      const response = await fetch(`${apiUrl}/login`, {
         method: 'POST',
         mode: 'cors',
         headers: {
           'Content-Type': 'application/json',
+          ...(storedToken && { 'Authorization': `Bearer ${storedToken}` }), // 토큰이 존재할 때만 헤더 추가
         },
         body: JSON.stringify({ username, password }),
         credentials: 'include',
       });
-      
-      console.log(response); // 응답 상태 확인
-      if (response.ok) {
-         const data = await response.json();
-         const token = data.token; 
-         console.log('token:', token); // 토큰 확인
-         localStorage.setItem('token', token); // 토큰 저장
-         alert('로그인 성공!');
-         navigate('/'); 
 
+      // 응답 상태 확인
+      if (response.ok) {
+        const data = await response.json();
+        console.log('응답 데이터:', data);
+        
+        const token = data.token;
+        if (token) {
+          console.log('토큰:', token); 
+          localStorage.setItem('token', token); // 토큰 저장
+          alert('로그인 성공!');
+          navigate('/');
+        } else {
+          alert('로그인 성공했으나 토큰을 찾을 수 없습니다.');
+        }
       } else {
-        const errorData = await response.json();
-        alert(`로그인 실패: ${errorData.message || '아이디 또는 비밀번호가 올바르지 않습니다.'}`);
+        // 오류 발생 시 에러 메시지 처리
+        let errorMessage = '아이디 또는 비밀번호가 올바르지 않습니다.';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch (error) {
+          console.error('응답 파싱 중 오류:', error);
+        }
+        alert(`로그인 실패: ${errorMessage}`);
       }
     } catch (error) {
       console.error('로그인 요청 중 오류 발생:', error);
-      alert('로그인 요청 중 오류가 발생했습니다.'); 
-  }
-};
-
-  
+      alert('로그인 요청 중 오류가 발생했습니다.');
+    }
+  };
 
   const loginJoin = () => {
     navigate('/Join'); // 회원가입 페이지로 이동
@@ -80,6 +91,7 @@ const Login = () => {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} // 상태 업데이트
+                autoComplete="current-password"
               />
             </div>
             <div className="login-box">

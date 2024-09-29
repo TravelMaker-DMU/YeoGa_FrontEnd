@@ -20,6 +20,28 @@ function JoinStep2() {
   const nextclick = () => {
     navigate('JoinStep3');
   }
+
+  // 전화번호 형식 변환 함수
+  const formatPhoneNumber = (value) => {
+    // 숫자만 남기기
+    const onlyNumbers = value.replace(/\D/g, '');
+
+    // 010-xxxx-xxxx 형식 적용
+    if (onlyNumbers.length < 4) {
+      return onlyNumbers;
+    } else if (onlyNumbers.length < 8) {
+      return `${onlyNumbers.slice(0, 3)}-${onlyNumbers.slice(3)}`;
+    } else {
+      return `${onlyNumbers.slice(0, 3)}-${onlyNumbers.slice(3, 7)}-${onlyNumbers.slice(7, 11)}`;
+    }
+  };
+
+  // 전화번호 입력 핸들러
+  const handleTelChange = (e) => {
+    const formattedTel = formatPhoneNumber(e.target.value);
+    setTel(formattedTel);
+  };
+
   // 회원가입 요청 처리 함수
   const handleSubmit = async (e) => {
     e.preventDefault(); // 폼 제출 시 페이지 새로고침 방지
@@ -33,20 +55,19 @@ function JoinStep2() {
     const formData = new FormData();
     formData.append('username', username);
     formData.append('password', password);
+
     for (let pair of formData.entries()) {
-      // console.log(pair[0]+ ', ' + pair[1]); 
+      console.log(pair[0]+ ', ' + pair[1]); 
     }
 
     const apiUrl = 'https://port-0-yeoga-backend-m1hgzlk8a26c4004.sel4.cloudtype.app';  
 
     try {
-      // const token = localStorage.getItem('string'); 
-
       const response = await fetch(`${apiUrl}/join`, {
         method: 'POST', 
         credentials: 'include',
         headers: {
-          // 'Authorization': `Bearer ${token}`, 
+          
         },
         body: formData, 
       });
@@ -94,13 +115,13 @@ function JoinStep2() {
             required
           />
         </fieldset>
-
+        
         {/* 아이디 입력 필드 */}
         <fieldset className="form-group">
           <label htmlFor="username">아이디 *</label>
           <input
             type="text"
-            id="username"
+            id="username" 
             name="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -137,8 +158,9 @@ function JoinStep2() {
             required
           />
         </fieldset>
-            {/* 생년월일 입력 필드 */}
-            <fieldset className="form-group">
+
+        {/* 생년월일 입력 필드 */}
+        <fieldset className="form-group">
           <label htmlFor="birthdate">생년월일 *</label>
           <input
             type="text"
@@ -151,28 +173,27 @@ function JoinStep2() {
           />
         </fieldset>
 
-          {/* 전화번호 입력 필드 */}
-          <fieldset className="form-group">
-          <label htmlFor="birthdate">전화번호 *</label>
+        {/* 전화번호 입력 필드 */}
+        <fieldset className="form-group">
+          <label htmlFor="tel">전화번호 *</label>
           <input
             type="text"
             id="tel"
             name="tel"
             value={tel}
-            onChange={(e) => setBirthdate(e.target.value)}
+            onChange={handleTelChange} // 변경된 핸들러 적용
             placeholder="010-0000-0000"
             required
           />
-        </fieldset>
-        
+        </fieldset> 
         
         <div className='next-button2-container'>
-      <button type="submit" className='prev-button2' onClick={prevclick}>
-          이전
-        </button>
-      <button type="submit" className='next-button2'>
-          다음
-        </button>
+          <button type="button" className='prev-button2' onClick={prevclick}>
+            이전
+          </button>
+          <button type="submit" className='next-button2'>
+            다음
+          </button>
         </div> 
       </form>
      
