@@ -8,17 +8,26 @@ import '../styles/TripCourse.css';
 const hotelimages = [
     {
       hotelimage:  'https://cdn.pixabay.com/photo/2022/09/16/17/07/city-7459162_960_720.jpg',
-      hoteltitle:  '강원도 속초',
+      hoteltitle:  '강원도 속초 여행코스 추천',
       courselist: '1. 설악 케이블카',
+      courselist2: '2. 설악산',
+      
     },
 
     {
       hotelimage:  'https://cdn.pixabay.com/photo/2021/08/09/11/38/island-6533073_1280.jpg',  
-      hoteltitle: ''
+      hoteltitle:  '전라남도 전주 여행코스 추천',
+      courselist: '1. 한옥마을',
+      courselist2: '2. 전주비빔밥 거리',
+      backgroundColor: '#FFCCCB',
     },
 
     {
       hotelimage:  'https://cdn.pixabay.com/photo/2023/04/20/11/55/village-7939562_960_720.jpg',
+      hoteltitle: '제주도 여행코스 추천',
+      courselist: '1. 한라산',
+      courselist2: '2. 성산일출봉',
+      backgroundColor: '#D3FFD3', // 배경색 추가
     }
 
 ];
@@ -81,28 +90,30 @@ const tripnewsData = [
 const TripCourse = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [tripcurrentIndex, setTripcurrentIndex] = useState(0);
+    const currentBackgroundColor = hotelimages[tripcurrentIndex].backgroundColor;
 
 
     //수정 필요!
     
-    // const prevSlide = () => {
-    //     const newIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
-    //     setCurrentIndex(newIndex);
-    // }; 
+    const prevSlide = () => {
+        const newIndex = tripcurrentIndex === 0 ? hotelimages.length - 1 : tripcurrentIndex - 1;
+        setTripcurrentIndex(newIndex);
+    };
 
-    // const nextSlide = () => {
-    //     const newIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
-    //     setCurrentIndex(newIndex);
-    // };
+    const nextSlide = () => {
+        const newIndex = tripcurrentIndex === hotelimages.length - 1 ? 0 : tripcurrentIndex + 1;
+        setTripcurrentIndex(newIndex);
+    };
 
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         nextSlide();
-    //     }, 3000);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            nextSlide();
+        }, 3000);
 
-    //     return () => clearInterval(interval); 
-    // }, [currentIndex]);
+        return () => clearInterval(interval);
+    }, [tripcurrentIndex]);
    
+
 
     const prevCard = () => {
         if (currentIndex > 0) {
@@ -172,14 +183,21 @@ const TripCourse = () => {
     };
 
     return (
-        <div className='tripcontents'>
-            <div className="slider">
-                <img src={hotelimages[tripcurrentIndex]} alt="slide" className='imageslider' />
-                <div className='sliderback'>
-                    <h2 className='sliderfont'>여행 코스추천</h2>
-                    {/* <p className='sliderread'>a nationwide tour of<br/>good restaurants</p> */}
+        <div className="trip-contents" style={{  transition: 'background-color 0.5s ease' }}>
+      <div className="slider">
+            <img 
+                src={hotelimages[tripcurrentIndex].hotelimage} 
+                alt={hotelimages[tripcurrentIndex].hoteltitle || "slide"} 
+                className='imageslider' 
+            />
+            <div className='tripCourse-slider-background'style={{ backgroundColor: currentBackgroundColor,transform: `translateX(-${tripcurrentIndex * 100}%)`, transition: 'transform 0.5s ease-in-out' }}>
+                <h2 className='tripCourse-slider-title'>{hotelimages[tripcurrentIndex].hoteltitle || "여행 코스추천"}</h2>
+                <div className='tripCourse-slider-contents-list'>
+                <p className='sliderread'>{hotelimages[tripcurrentIndex].courselist || ""}</p>
+                 <p className='sliderread'>{hotelimages[tripcurrentIndex].courselist2 || ""}</p>
                 </div>
             </div>
+        </div>
 
             <div className='lodging'>
                 <h2 className='Trip-Course-hotel-title'>최근 많이 방문된 숙소예요</h2>
