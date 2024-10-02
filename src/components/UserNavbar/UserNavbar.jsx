@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useNavigate} from  "react";
 import './UserNavbar.css';
 
-const UserNavbar = () => {
-    return(
 
+const UserNavbar = () => {
+
+    const usenavigate = useNavigate;
+  
+    return(
     <div className="User-Navbar">
       <div className="User-section">   
         <div className="profile-pic"></div>
@@ -12,9 +15,9 @@ const UserNavbar = () => {
       <ul className="nav-items">
         <NavItem icon="📅" label="Reservation" />
         <NavItem icon="🔖" label="Bookmark" />
-        <NavItem icon="🗓" label="Calendar" />
+        <NavItem icon="🗓" label="Calendar"/>
         <NavItem icon="💬" label="1:1 AI Chat" />
-        <NavItem icon="❓" label="FAQ" />
+        <NavItem icon="❓" label="FAQ"  />
         <NavItem icon="⚙" label="Settings" />
         <NavItem icon="🔓" label="Logout" />
       </ul>

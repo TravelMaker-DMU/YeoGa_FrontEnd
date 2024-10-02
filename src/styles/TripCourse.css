@@ -58,6 +58,7 @@
   bottom: 80px;
   font-size: 25px;
   margin-left: 760px;
+  width: calc(320px * 3);
 }
 
 .slider img {

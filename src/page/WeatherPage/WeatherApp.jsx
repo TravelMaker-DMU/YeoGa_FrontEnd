@@ -56,13 +56,14 @@ const WeatherApp = () => {
 
       {weatherData && (
         <div className="weather-info">
-        
+          
           <p>Temperature: {weatherData.main.temp}°C</p>
           <p>Weather: {weatherData.weather[0].description}</p>
           <p>Humidity: {weatherData.main.humidity}%</p>
           <p>Wind Speed: {weatherData.wind.speed} m/s</p>
           <p> {weatherData.id}</p>
-
+          <p>{weatherData.weather[0].icon}</p>
+          {/* <p>{weatherData.main.temp_max}</p> */}
 
           {/* <p> {weatherData.main.temp}</p> */}
         </div>

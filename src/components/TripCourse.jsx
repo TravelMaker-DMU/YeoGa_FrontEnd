@@ -190,7 +190,7 @@ const TripCourse = () => {
                 alt={hotelimages[tripcurrentIndex].hoteltitle || "slide"} 
                 className='imageslider' 
             />
-            <div className='tripCourse-slider-background'style={{ backgroundColor: currentBackgroundColor,transform: `translateX(-${tripcurrentIndex * 100}%)`, transition: 'transform 0.5s ease-in-out' }}>
+            <div className='tripCourse-slider-background'style={{ backgroundColor: currentBackgroundColor,transform: `translateX(-${tripcurrentIndex * 0}%)`, transition: 'transform 0.5s ease-in-out' }}>
                 <h2 className='tripCourse-slider-title'>{hotelimages[tripcurrentIndex].hoteltitle || "여행 코스추천"}</h2>
                 <div className='tripCourse-slider-contents-list'>
                 <p className='sliderread'>{hotelimages[tripcurrentIndex].courselist || ""}</p>
