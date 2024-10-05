@@ -6,47 +6,43 @@ import googleicon from "../images/icon/google-icon.png";
 import kakaoicon from "../images/icon/kakao-icon.png";
 import facebookicon from "../images/icon/facebook.png";
 import logo from '../images/yega-logo.png';
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState(''); // 이메일 상태 관리
   const [password, setPassword] = useState(''); // 비밀번호 상태 관리
   const navigate = useNavigate();
 
+  // 로그인 요청 함수
   const handleLogin = async (e) => {
     e.preventDefault(); // 폼 제출 시 페이지 새로고침 방지  
 
     const apiUrl = 'https://port-0-yeoga-backend-m1hgzlk8a26c4004.sel4.cloudtype.app';
 
     try {
-      const storedToken = localStorage.getItem('token'); // 'string' 대신 'token' 사용
       const response = await fetch(`${apiUrl}/login`, {
         method: 'POST',
         mode: 'cors',
         headers: {
           'Content-Type': 'application/json',
-          ...(storedToken && { 'Authorization': `Bearer ${storedToken}` }), // 토큰이 존재할 때만 헤더 추가
         },
         body: JSON.stringify({ username, password }),
-        credentials: 'include',
+        credentials: 'include', // 쿠키 전송을 포함하도록 설정
       });
 
       // 응답 상태 확인
       if (response.ok) {
-        const data = await response.json();
-        console.log('응답 데이터:', data);
-        
-        const token = data.token;
+        // 토큰을 응답 헤더에서 가져옴
+        const token = response.headers.get('Access');
         if (token) {
           console.log('토큰:', token); 
-          localStorage.setItem('token', token); // 토큰 저장
-          alert('로그인 성공!');
-          navigate('/');
+          sessionStorage.setItem('token', token); // 토큰 저장
+          alert('로그인 성공! 메인 페이지로 이동합니다.');
+          navigate('/'); // 메인 페이지로 이동
         } else {
-          alert('로그인 성공했으나 토큰을 찾을 수 없습니다.');
+          alert('로그인 성공했으나 토큰이 반환되지 않았습니다.');
         }
       } else {
-        // 오류 발생 시 에러 메시지 처리
         let errorMessage = '아이디 또는 비밀번호가 올바르지 않습니다.';
         try {
           const errorData = await response.json();
@@ -58,10 +54,11 @@ const Login = () => {
       }
     } catch (error) {
       console.error('로그인 요청 중 오류 발생:', error);
-      alert('로그인 요청 중 오류가 발생했습니다.');
+      alert('로그인 요청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
     }
   };
 
+  // 회원가입 페이지로 이동하는 함수
   const loginJoin = () => {
     navigate('/Join'); // 회원가입 페이지로 이동
   };
@@ -82,16 +79,19 @@ const Login = () => {
                 placeholder="Email"
                 className="username"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)} // 상태 업데이트
+                onChange={(e) => setUsername(e.target.value)}
+                autoComplete="username" 
+                required // 필수 입력 필드로 설정
               />
             </div>
             <div className="input-group">
               <input
                 type="password"
-                placeholder="Password"
+                placeholder="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} // 상태 업데이트
-                autoComplete="current-password"
+                autoComplete="password"
+                required // 필수 입력 필드로 설정
               />
             </div>
             <div className="login-box">
@@ -105,7 +105,7 @@ const Login = () => {
           <div className="social-login">
             <div className="social-icons">
               <div className="facebook-box">
-                <img src={facebookicon} alt="Naver" className="facebook" />
+                <img src={facebookicon} alt="Facebook" className="facebook" />
                 <div className="facebook-text">
                   <p>페이스북 로그인</p>
                 </div>
