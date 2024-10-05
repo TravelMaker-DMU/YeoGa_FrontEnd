@@ -27,7 +27,7 @@ const User = () => {
 
   // 날짜 배열 생성 (빈칸 포함)
   const dates = Array.from({ length: firstDayOfMonth + daysInMonth }, (_, i) => {
-    const date = i >= firstDayOfMonth ? i - firstDayOfMonth + 1 : null;
+    const date = i >= firstDayOfMonth ? (i - firstDayOfMonth + 1).toString().padStart(2, '0') : null;
     return date;
   });
 
@@ -36,7 +36,7 @@ const User = () => {
       <UserNavbar/>
      
       <div className="calendar-container">
-        
+
       <div className="calendar-container-header">
         <div className='User-calendar-container-header-title'>
           <button className='User-calender-button' onClick={goToPreviousMonth}>◀</button>

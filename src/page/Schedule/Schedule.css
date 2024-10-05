@@ -1,0 +1,198 @@
+/* 전체 페이지 레이아웃 */
+.schedule-container {
+    display: flex;
+    width: 100%;
+    
+    background-color: #f9fafc;
+  }
+  /* 캘린더 헤더 스타일 */
+
+  .custom-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 10px 0;
+    height: 100px;
+  }
+  .Schedule-header-toolbar-container{
+    display: flex;
+    background-color: #2563eb;
+    width: 100%;
+  }
+  
+  /* 왼쪽 화살표 */
+  .toolbar-left {
+    flex: 0 0 10%; /* 10% 너비만 차지 */
+  }
+  
+  .arrow-btn {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .arrow-btn:hover {
+    background-color: #2563eb;
+  }
+  
+  /* 중앙에 년도와 월 */
+  .toolbar-center {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .rbc-toolbar-label {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* 오른쪽 하단에 버튼들 */
+  .toolbar-right {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+  }
+  
+  .rbc-btn-group {
+    display: flex;
+  }
+  
+  .rbc-btn-group button {
+    margin-left: 5px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .rbc-btn-group button:hover {
+    background-color: #2563eb;
+  }
+  
+  .rbc-btn-group .rbc-active {
+    background-color: #2563eb;
+    color: white;
+  }
+  
+  
+  /* 중앙 달력 섹션 */
+  .calendar-section {
+    width: 60%;
+    padding: 20px;
+    background-color: red;
+  }
+  
+  
+  .calendar {
+    height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border: solid 3px black;
+  }
+  
+  .add-event-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .add-event-btn:hover {
+    background-color: #2563eb;
+  }
+  
+
+  /* 캘린더 그리드 스타일 */
+  .rbc-time-header {
+    background-color: #f7f9fc;
+  }
+  
+  .rbc-timeslot-group {
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  /* 타임라인 배경 색 */
+  .rbc-time-content {
+    background-color: #ffffff;
+  }
+  
+  /* 모달 스타일 */
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    width: 400px;
+  }
+  
+  .modal h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .modal input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .save-btn {
+    background-color: #3b82f6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .save-btn:hover {
+    background-color: #2563eb;
+  }
+  
+  /* 오른쪽 사이드바 */
+  .right-sidebar {
+    width: 25%;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+  }
+  
+  .right-sidebar h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .calendar-small {
+    height: 200px;
+    background-color: #f4f4f4;
+    margin-bottom: 20px;
+  }
+  
+  .filters label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  

@@ -1,8 +1,6 @@
 .User-page {
   display: flex;
-
   width: 100%;
- 
   height: 100vh;
   color: #333;
   font-family: Arial, sans-serif;
@@ -20,7 +18,7 @@
 }
 
 .User-calendar-container-header-title {
-  border-bottom: solid 1px gray;
+ 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,34 +54,47 @@
   font-size: 24px;
   font-weight: bold;
 }
-
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 50px;
+  grid-template-columns: repeat(7, 1fr); /* 7일로 구성된 그리드 */
+  gap: 0px; /* 셀 사이의 간격 */
   width: 100%;
-
   background-color: white;
+  padding: 10px;
+  height: 100%;
+
 }
 
 .calendar-day {
-  color: #555;
+  background-color: #f0f4f8; /* 요일 배경색 */
+  color: #333; /* 요일 글자 색상 */
   text-align: center;
   font-weight: bold;
+  font-size: 14px; /* 글자 크기 */
   padding: 10px 0;
-  border-bottom: 1px solid #eee;
 }
+
+.calendar-day:nth-child(1){
+  border-radius: 10px 0px 0px 0px;
+}
+.calendar-day:nth-child(7) {
+  border-radius: 0px 10px 0px 0px;
+}
+
 
 .calendar-date {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: end;
+  height: 100px; /* 박스 높이 */
   color: #333;
+  font-size: 16px;
   font-weight: bold;
- 
-  border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 1px solid #ddd; /* 박스 테두리 */
+  background-color: white;
+  position: relative;
+  padding: 5px;
 }
 
 .calendar-date:hover {
@@ -94,7 +105,7 @@
 .calendar-date.highlight {
   background-color: #4A90E2;
   color: white;
-  border-radius: 50%;
+  border-radius: 5px;
 }
 
 .sunday {
@@ -104,6 +115,22 @@
 .saturday {
   color: #3498DB;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .User-Right-Sidebar-Container {
   display: flex;
