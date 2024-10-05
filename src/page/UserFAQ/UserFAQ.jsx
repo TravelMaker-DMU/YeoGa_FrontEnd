@@ -1,6 +1,7 @@
 import React from 'react';
 import UserNavbar from '../../components/UserNavbar/UserNavbar';
 import './UserFAQ.css';
+import Searchicon from  '../../images/icon/icons8-search-50.png';
 
 const FAQPage = () => {
     const faqData = [
@@ -40,6 +41,16 @@ const FAQPage = () => {
                         ))}
                     </tbody>
                 </table>
+            </div>
+            <div className='User-FAQ-Search-container'>
+                <div className='User-FAQ'>
+                    <img src={Searchicon} className='User-FAQ-Search-icon' ></img>
+             <form className='User-FAQ-Search-form'>
+               <input type='text'
+                className='User-FAQ-Search-text'
+                placeholder="검색해보세요" ></input>
+             </form>  
+            </div>
             </div>
             </div>
             <div className="User-FAQ-right-section">

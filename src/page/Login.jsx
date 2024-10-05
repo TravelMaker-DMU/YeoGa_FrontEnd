@@ -6,7 +6,7 @@ import googleicon from "../images/icon/google-icon.png";
 import kakaoicon from "../images/icon/kakao-icon.png";
 import facebookicon from "../images/icon/facebook.png";
 import logo from '../images/yega-logo.png';
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState(''); // 이메일 상태 관리
@@ -32,30 +32,17 @@ const Login = () => {
 
       // 응답 상태 확인
       if (response.ok) {
-        // 응답 본문이 있는지 확인
-        let data;
-        try {
-          const text = await response.text(); // 먼저 응답을 텍스트로 가져옵니다.
-          data = text ? JSON.parse(text) : {}; // 텍스트가 존재하면 JSON으로 파싱하고, 없으면 빈 객체로 설정
-        } catch (error) {
-          console.error('JSON 파싱 중 오류 발생:', error);
-          alert('응답 데이터 처리 중 오류가 발생했습니다.');
-          return;
-        }
-        console.log('응답 데이터:', data);
-
-
-        const token = data.token;
+        // 토큰을 응답 헤더에서 가져옴
+        const token = response.headers.get('Access');
         if (token) {
           console.log('토큰:', token); 
-          localStorage.setItem('token', token); // 토큰 저장
+          sessionStorage.setItem('token', token); // 토큰 저장
           alert('로그인 성공! 메인 페이지로 이동합니다.');
           navigate('/'); // 메인 페이지로 이동
         } else {
           alert('로그인 성공했으나 토큰이 반환되지 않았습니다.');
         }
       } else {
-        // 오류 발생 시 에러 메시지 처리
         let errorMessage = '아이디 또는 비밀번호가 올바르지 않습니다.';
         try {
           const errorData = await response.json();
