@@ -2,47 +2,46 @@
 .schedule-container {
     display: flex;
     width: 100%;
-    
-    background-color: #f9fafc;
+  
+    /* background-color: #f9fafc; */
   }
   /* 캘린더 헤더 스타일 */
 
   .custom-toolbar {
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
     align-items: center;
     position: relative;
     padding: 10px 0;
     height: 100px;
+   
   }
   .Schedule-header-toolbar-container{
     display: flex;
-    background-color: #2563eb;
+   
+    align-items: center;
+    justify-content: center;
+  
     width: 100%;
   }
   
-  /* 왼쪽 화살표 */
-  .toolbar-left {
-    flex: 0 0 10%; /* 10% 너비만 차지 */
-  }
   
   .arrow-btn {
-    background-color: #3b82f6;
-    color: white;
+     background-color: white;
+    color: black;
     border: none;
-    padding: 8px 12px;
+    padding: 8px  12px;
     border-radius: 5px;
+    margin-left: 25px;
     cursor: pointer;
   }
   
-  .arrow-btn:hover {
-    background-color: #2563eb;
-  }
-  
+ 
   /* 중앙에 년도와 월 */
   .toolbar-center {
     flex: 1;
     text-align: center;
+
   }
   
   .rbc-toolbar-label {
@@ -53,13 +52,15 @@
   
   /* 오른쪽 하단에 버튼들 */
   .toolbar-right {
-    position: absolute;
-    right: 10px;
+    width: 100%;
+    position: relative;
     bottom: 0;
   }
   
   .rbc-btn-group {
     display: flex;
+    float: right;
+   
   }
   
   .rbc-btn-group button {
@@ -86,18 +87,17 @@
   .calendar-section {
     width: 60%;
     padding: 20px;
-    background-color: red;
+    /* background-color: red; */
   }
-  
-  
+
   .calendar {
     height: 90%;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-    border: solid 3px black;
+    /* opacity: 50%; */
+    
   }
-  
+ 
   .add-event-btn {
     margin-top: 20px;
     padding: 10px 20px;
@@ -109,6 +109,7 @@
     font-size: 16px;
   }
   
+
   .add-event-btn:hover {
     background-color: #2563eb;
   }
