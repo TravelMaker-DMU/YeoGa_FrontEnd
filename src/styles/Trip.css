@@ -12,18 +12,19 @@
 /* Main content layout */
 .main-content {
     display: flex;
-    flex-wrap: wrap; /* Flex items will wrap to the next line if needed */
+    flex-wrap: wrap;
     width: 90%;
     margin: 20px auto;
-    
+    /* height: 1200px;    */
 }
 
-/* Filter section styling */
+
 .filters {
-    flex: 1; /* Allows filters to adjust size based on available space */
+    flex: 0.5; /* Allows filters to adjust size based on available space */
     width: 20%;
     border-right: 1px solid #ccc;
     padding-right: 20px;
+    
     
 }
 
@@ -99,10 +100,10 @@
     padding: 10px;
 }
 
-/* Media queries for responsive design */
+
 @media (max-width: 768px) {
     .main-content {
-        flex-direction: column; /* Stacks filters on top of hotel list on smaller screens */
+        flex-direction: column; 
     }
     
     .filters, .hotels {
@@ -111,8 +112,8 @@
     }
     
     .hotel-grid {
-        flex-direction: column; /* Stacks grid items */
-        align-items: center; /* Center-aligns items in smaller screens */
+        flex-direction: column;
+        align-items: center;
     }
 
     .hotel-image-placeholder {

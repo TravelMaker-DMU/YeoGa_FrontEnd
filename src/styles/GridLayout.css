@@ -4,6 +4,12 @@
     max-width: 1200px;
     margin: 0 auto;
     height: 500px;
+    flex-direction: center;
+    align-items: center;
+}
+
+.trip {
+    margin-bottom: 20px;
 }
 
 .boxone, .boxtwo{
@@ -13,14 +19,14 @@ padding-top: 30px;
 }
 
 
-h3 {
+.box h3 {
+    margin-top: 10px;
+    font-size: 16px;
+    justify-self: center;
     text-align: center;
-    z-index: 1;
-    position: absolute;
-    margin-left: 110px;
-    margin-top: 75px;
-    font-weight: bold;    
-    
+    justify-content: space-between;
+    align-items: center;
+    justify-items: center;
 }
 
 .box {
@@ -28,6 +34,7 @@ h3 {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 250px;
     height: 200px;
+    text-align: center;
 }
 
 img {
@@ -42,6 +49,6 @@ img {
 }
 
 .box img:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     filter: brightness(90%);
 }
