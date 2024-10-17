@@ -71,4 +71,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 ### npm install react-big-calendar moment 설치 필수
+### npm install moment-timezone
+
 
