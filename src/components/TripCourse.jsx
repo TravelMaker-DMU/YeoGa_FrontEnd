@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/TripCourse.css';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api';
-const API_KEY = 'o7bpGeXfnEzXHTdxdy2YRXX9uFl6ZyfR5/SG9xsPZFGoWZwfClm/NrCEJNGioZYpBNJNtdYxQBGk2WA/mh2stw==';
-const G_API_KEY = 'AIzaSyAhsr3XosZlrX9qZeLq7IqpQ1bQM1QNQ1I';
+const API_URL = '/api';
 
 const hotelimages = [
     {
@@ -102,7 +100,7 @@ const TripCourse = () => {
     const fetchLodgingData = async () => {
         try {
             const response = await axios.get(
-                `http://localhost:8080/api/lodging`,
+                `/api/lodging`,
                 {
                     params: {
                         lat: 37.5665,
