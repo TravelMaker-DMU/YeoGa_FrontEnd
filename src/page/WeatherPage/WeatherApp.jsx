@@ -6,7 +6,7 @@ const WeatherApp = () => {
   const [city, setCity] = useState('Seoul'); // 기본 값을 'Seoul'로 설정
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
-  const apiKey = 'd7b845e5df78442876b488521d1f6ef3'; // API Key
+  const apiKey = process.env.REACT_APP_API_KEY; 
 
   const fetchWeather = async () => {
     try {
@@ -56,13 +56,14 @@ const WeatherApp = () => {
 
       {weatherData && (
         <div className="weather-info">
-        
+          
           <p>Temperature: {weatherData.main.temp}°C</p>
           <p>Weather: {weatherData.weather[0].description}</p>
           <p>Humidity: {weatherData.main.humidity}%</p>
           <p>Wind Speed: {weatherData.wind.speed} m/s</p>
           <p> {weatherData.id}</p>
-
+          <p>{weatherData.weather[0].icon}</p>
+          {/* <p>{weatherData.main.temp_max}</p> */}
 
           {/* <p> {weatherData.main.temp}</p> */}
         </div>

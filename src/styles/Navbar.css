@@ -36,6 +36,7 @@
   gap: 100px; /* 메뉴 항목 간의 간격 */
   position: relative;
   justify-content: center; /* 중앙 정렬 */
+  margin-left: 130px;
 }
 
 .nav-links li {
@@ -88,6 +89,13 @@
   color: #007BFF; /* 호버 시 텍스트 색상 변경 */
 }
 
+
+
+.user-icon img {
+ width: 40px;
+ height: 40px;
+ cursor: pointer;
+}
 .login-btn {
   padding: 10px 20px;
   background-color: #007BFF;
