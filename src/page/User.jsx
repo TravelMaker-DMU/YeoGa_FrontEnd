@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/User.css';
 import UserNavbar from '../components/UserNavbar/UserNavbar';
+import { useNavigate } from 'react-router-dom';
+
+
+// useEffect, useState, useNavigate
 
 const User = () => {
   const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];

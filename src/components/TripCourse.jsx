@@ -3,7 +3,7 @@ import '../styles/TripCourse.css';
 
 
 // 여행소식 api 키 필요
-// 숙소카드쪽 api 키 필요
+// 숙소카드쪽 api 키 필요 
 
 
 const hotelimages = [
