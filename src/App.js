@@ -13,6 +13,8 @@ import Test1 from './page/Test1';
 import Join from './page/JoinPage/JoinStep1/Join';
 import JoinStep2 from './page/JoinPage/JoinStep2/JoinStep2';
 import WeatherApp from './page/WeatherPage/WeatherApp';
+import Test2 from './page/Test2';
+
 
 const App = () => {
     
@@ -24,6 +26,7 @@ const App = () => {
                 <Route path='/Trip' element={<Trip />} />
                 <Route path='/User' element={
                      <PrivateRoute> <User /></PrivateRoute>}/>  
+                     
                 <Route path='/User/FAQ' element={<UserFAQ/>} />
                 <Route path='/User/Schedule' element={<Schedule/>}/>    
                 <Route path='/User/Setting' element={<Setting/>}/>
@@ -31,6 +34,7 @@ const App = () => {
                 <Route path='/Join/step2' element={<JoinStep2 />} />
                 <Route path='/Weather' element={<WeatherApp />} />
                 <Route path='/Test1' element={<Test1 />} />
+                <Route path='/Test2' element={<Test2 />} />
 
             </Routes>
         </Router>

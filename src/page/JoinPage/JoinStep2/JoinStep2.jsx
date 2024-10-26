@@ -51,6 +51,7 @@ function JoinStep2() {
       return;
     }
   
+    
     // username과 password만 FormData에 추가
     const formData = new FormData();
     formData.append('username', username);
