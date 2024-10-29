@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/User.css';
 import UserNavbar from '../components/UserNavbar/UserNavbar';
 import { useNavigate } from 'react-router-dom';
-
+import '../styles/User.css';
 
 // useEffect, useState, useNavigate
 
@@ -12,6 +11,10 @@ const User = () => {
   return (
     <div className="User-page">
       <UserNavbar/>
+      
+      <div className='User-page-section'>
+        aa
+      </div>
      
     
       

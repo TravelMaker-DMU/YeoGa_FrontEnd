@@ -10,11 +10,13 @@ const GridLayout = () => {
         const fetchTouristSpots = async () => {
             try {
                 const serviceKey = process.env.REACT_APP_API_KEY_openapi;
+                const randomPage = Math.floor(Math.random() * 10) + 1; // 1부터 10까지의 랜덤 페이지 번호
+
                 const response = await axios.get("http://apis.data.go.kr/B551011/KorService1/areaBasedList1", {
                     params: {
-                        serviceKey: serviceKey, // 자신의 인코딩된 API 키를 사용
-                        numOfRows: 4, // 원하는 개수로 조정
-                        pageNo: 1,
+                        serviceKey: serviceKey,
+                        numOfRows: 4,
+                        pageNo: randomPage, // 랜덤 페이지 번호 사용
                         MobileOS: 'ETC',
                         MobileApp: 'AppTest',
                         _type: 'json',
@@ -23,8 +25,10 @@ const GridLayout = () => {
                         listYN: 'Y'
                     }
                 });
+
                 if (response.data.response.body.items) {
                     setTouristSpots(response.data.response.body.items.item);
+                    
                 } else {
                     setError("데이터를 불러오지 못했습니다.");
                 }
@@ -45,12 +49,24 @@ const GridLayout = () => {
             <div className="boxone">
                 {touristSpots.map((spot, index) => (
                     <div key={index} className={`box box${index + 1}`}>
-                        <img src={spot.firstimage || "https://via.placeholder.com/500"} alt={spot.title} />
+                       <img src={spot.firstimage || "https://via.placeholder.com/500"} alt={spot.title} />
                         <h3 className="GridLayout-boxone-title">{spot.title}</h3>
                         <p className="GridLayout-boxone-descripts">{spot.addr1}</p>
                         <div className="GridLayout-footer-box">
                             <div className="GridLayout-footer-box-left">{spot.areacode}</div>
-                            
+                            <div className="GridLayout-footer-box-center">{spot.cat1}</div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+            <div className="boxtwo">
+                {touristSpots.map((spot, index) => (
+                    <div key={index} className={`box box${index + 1}`}>
+                       <img src={spot.firstimage || "https://via.placeholder.com/500"} alt={spot.title} />
+                        <h3 className="GridLayout-boxone-title">{spot.title}</h3>
+                        <p className="GridLayout-boxone-descripts">{spot.addr1}</p>
+                        <div className="GridLayout-footer-box">
+                            <div className="GridLayout-footer-box-left">{spot.areacode}</div>
                             <div className="GridLayout-footer-box-center">{spot.cat1}</div>
                         </div>
                     </div>

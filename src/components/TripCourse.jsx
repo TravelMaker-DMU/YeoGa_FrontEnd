@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/TripCourse.css';
-
-
-// 여행소식 api 키 필요
-// 숙소카드쪽 api 키 필요 
+import axios from 'axios';
 
 
 const hotelimages = [
@@ -73,22 +70,48 @@ const cardData = [
     }
 ];
 
-const tripnewsData = [
-    {
-        title: '서울특별시 -',
-        description: '2024년 서커스 마술 여행'
-    },
-    {
-        title: '서울특별시 -',
-        description: '2024년 서커스 마술 여행'
-    },
-    {
-        title: '서울특별시 -',
-        description: '2024년 서커스 마술 여행'
-    }
-];
+
 
 const TripCourse = () => {
+    
+
+    {/* 수정중 */}
+    const [tripnews, setTripnews] = useState([]);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchTouristSpots = async () => {
+            try {
+                const serviceKey = process.env.REACT_APP_API_KEY_openapi;
+                const response = await axios.get("http://apis.data.go.kr/B551011/KorService1/searchFestival1", {
+                    params: {
+                        serviceKey: serviceKey,
+                        numOfRows: 1,
+                        MobileOS: 'ETC',
+                        MobileApp: 'AppTest',
+                        _type: 'json',
+                        arrange: 'R',
+                        listYN: 'Y',
+                        eventStartDate: '20241001'
+                    }
+                });
+
+                if (response.data.response.body.items) {
+                    setTripnews(response.data.response.body.items.item);
+                    
+                } else {
+                    setError("데이터를 불러오지 못했습니다.");
+                }
+            } catch (err) {
+                setError("API 요청 중 오류가 발생했습니다.");
+                console.error(err);
+            }
+        };
+
+        fetchTouristSpots();
+    }, []);
+
+
     const [currentIndex, setCurrentIndex] = useState(0);
     const [tripcurrentIndex, setTripcurrentIndex] = useState(0);
     const currentBackgroundColor = hotelimages[tripcurrentIndex].backgroundColor;
@@ -217,18 +240,34 @@ const TripCourse = () => {
 
             <div className='tripnews'>
                 <div className='tripcontainer'>
-                    <div className='tripimg'>
-                        {/* Placeholder for image or other content */}
-                    </div>
+                <div className='tripimg'>
+            {tripnews.length > 0 && (
+                <img 
+                    src={tripnews[0].firstimage || "https://via.placeholder.com/150"} 
+                    alt={tripnews[0].title} 
+                    className='tripnews-image' 
+                />
+            )}
+        </div>
+
                    
                     <div className='triplist'>
                         <h2 className='trip-title-name'>이번주 여행소식</h2>
-                        {tripnewsData.map((trip, index) => (
-                            <Tripnews key={index} title={trip.title} description={trip.description} />
+                        {error && <p>{error}</p>}   
+                        {tripnews.map((trip, index) => (
+                            <div key={index} className='trip-item'>
+                                <div className='trip-text'>
+                                    <div className='trip-title'>{trip.title}</div>
+                                    <div className='trip-description'>시작일 : {trip.eventstartdate} ~ 종료일: {trip.eventenddate}</div>
+                                    {/* <div>지역 코드: {trip.areacode}</div> */}
+                                    <div>상세 주소: {trip.addr1}</div>
+                                    {/* <div>전화번호: {trip.tel}</div> */}
+                                </div>
+                            </div>
                         ))}
-                    </div>
-                </div>
-            </div>
+            </div>  
+        </div>
+        </div>
         </div>
     );
 };

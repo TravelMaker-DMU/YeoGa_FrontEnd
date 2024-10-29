@@ -4,7 +4,7 @@ import UserNavbar from '../../components/UserNavbar/UserNavbar';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import 'moment/locale/ko';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import './Schedule.css'; // 추가된 스타일 파일
+import './Calendar.css'; // 추가된 스타일 파일
 
 const localizer = momentLocalizer(moment);
 
@@ -70,7 +70,7 @@ function CustomToolbar({ label, onNavigate, onView, view }) {
 }
 
 
-function Schedule() {
+const Calendars = () => {
   const [showModal, setShowModal] = useState(false);
  
   return (
@@ -119,6 +119,6 @@ function Schedule() {
   );
 }
 
-export default Schedule;
+export default Calendars;
 
 
