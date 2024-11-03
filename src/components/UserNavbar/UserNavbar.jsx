@@ -23,7 +23,7 @@ const UserNavbar = () => {
     { icon: home, label: '홈', path: '/' },
     { icon: Reservation, label: '일정', path: '/User/Schedule' },
     { icon: bookmark, label: '북마크', path: '/bookmark' },
-    { icon: calander, label: '캘린더', path: '/calendar' },
+    { icon: calander, label: '캘린더', path: '/User/Calendars' },
     { icon: Chat, label: '1:1 AI Chat', path: '/chat' },
     { icon: FAQ, label: 'FAQ', path: '/User/FAQ' },
     { icon: setting, label: '설정', path: '/User/Setting' }, // 콜론 사용하여 onClick 설정

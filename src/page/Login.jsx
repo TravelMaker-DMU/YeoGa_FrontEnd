@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer/Footer";
 import '../styles/Login.css';
-import googleicon from "../images/icon/google-icon.png";
 import kakaoicon from "../images/icon/kakao-icon.png";
 import facebookicon from "../images/icon/facebook.png";
-import logo from '../images/yega-logo.png';
+import yega from '../images/aaa.png';
 import { json, useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -63,12 +62,12 @@ const Login = () => {
     navigate('/Join'); // 회원가입 페이지로 이동
   };
 
-  return (
+  return (  
     <div className="Login">
       <Navbar />
       <div className="background-image">
         <div className="content">
-          <img src={logo} alt="logo" className="Login-logo" />
+          <img src={yega} alt="logo" className="Login-logo" />
         </div>
 
         <div className="login-form">
@@ -76,7 +75,7 @@ const Login = () => {
             <div className="input-group">
               <input
                 type="text" 
-                placeholder="Email"
+                placeholder="이메일"
                 className="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -87,7 +86,7 @@ const Login = () => {
             <div className="input-group">
               <input
                 type="password"
-                placeholder="password"
+                placeholder="패스워드"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} // 상태 업데이트
                 autoComplete="password"

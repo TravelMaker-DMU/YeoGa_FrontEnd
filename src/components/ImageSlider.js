@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/ImageSlider.css';
 import seoulmainimg from "../images/seoul-main-img.jpg";
 import seoul from '../images/반포대교.jpg';
+import slide1 from '../images/slideimg.png';
 
 function ImageSlider() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -9,9 +10,9 @@ function ImageSlider() {
   const imageSlides = [
     {
       image: seoul,
-      background: seoul,
-      title: "서울특별시",
-      description: "서울의 매력을 느낄 수 있는 반포대교",
+      background: slide1,
+      title: "자연과 전통이 어우러진 여행지, 전라남도",
+      description: "푸른 바다와 드넓은 산이 빚어내는 아름다움, 전라남도에서 잊지 못할 여정을 시작하세요.",
     },
     {
       image: seoulmainimg,
@@ -47,7 +48,6 @@ function ImageSlider() {
       <div className="overlay">
         <h1>{imageSlides[currentImageIndex].title}</h1>
         <p>{imageSlides[currentImageIndex].description}</p>
-        <button>Button</button>
       </div>
       <div className="slider-images">
         <div

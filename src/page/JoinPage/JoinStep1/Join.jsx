@@ -23,7 +23,7 @@ const Join  = () => {
 
    <div className="Join-title">
       <h2 className="Join-title-text">회원가입</h2>
-      <p>약관동의</p>
+      <p>회원가입을 통해  다양한 서비스를 이용하세요</p>
       </div>
 
       <div className="Join-step-all">
