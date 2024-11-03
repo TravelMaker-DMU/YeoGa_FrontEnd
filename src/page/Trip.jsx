@@ -1,17 +1,57 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer/Footer';
-import SearchBar from '../components/SearchBar';
+import axios from 'axios';
 import '../styles/Trip.css';
+import tripimg from '../images/tripimg.png';
+
 
 const Trip = () => {
+
+    const [hotels, setHotels] = useState([]);  // State to store hotel data
+    const [error, setError] = useState(null);
+
+  useEffect(() => {
+        const fetchHotels = async () => {
+            try {
+                const serviceKey = process.env.REACT_APP_API_KEY_openapi;
+                const response = await axios.get("http://apis.data.go.kr/B551011/KorService1/searchStay1", {
+                    params: {
+                        serviceKey: serviceKey,
+                        numOfRows: 10, 
+                        pageNo: 2,
+                        MobileOS: 'ETC',
+                        MobileApp: 'AppTest',
+                        _type: 'json',
+                        listYN: 'Y',
+                        arrange: 'O',
+                    }
+                });
+                
+                if (response.data.response.body.items.item) {
+                    setHotels(response.data.response.body.items.item);
+                    const shuffledHotels = response.data.response.body.items.item.sort(() => Math.random() - 0.5);
+                    setHotels(shuffledHotels);
+                    
+                } else {
+                    setError("데이터를 불러오지 못했습니다.");
+                }
+            } catch (error) {
+                setError("API 요청 중 오류가 발생했습니다.");
+                console.error(error);
+            }
+        };
+
+        fetchHotels();
+    }, []);  // Empty dependency array to fetch only once on mount
+    
     return (
         <div className="trip-page">
             <Navbar/>
             <div className='trip-image'>
-                {/* Placeholder   for a trip image or banner */}
+                <img src={tripimg} alt=""  className='trip-img'/>
             </div>
-            <SearchBar />
+         
 
             <div className="main-content">
         
@@ -122,60 +162,32 @@ const Trip = () => {
                         </ul>
                     </div>
                 </div>
-
-                
+         
                 <div className="hotels">
-                    <h2>BEST HOTEL</h2>
+                <h2>BEST HOTEL</h2>         
                     <div className="hotel-grid">
-                        {/* Placeholder for hotel images */}
-                        <div className="hotel-image-placeholder"></div>
-                        <div className="hotel-image-placeholder"></div>
-                        <div className="hotel-image-placeholder"></div>
-                        <div className="hotel-image-placeholder"></div>
-                    </div>
-                    <div className="hotel-list">
-                        {/* Sample hotel card */}
-                        <div className="hotel-card">
-                            <img src="https://via.placeholder.com/150" alt="Hotel" className="hotel-image" />
-                            <div className="hotel-info">
-                                <h4>1. BEST HOTEL</h4>
-                                <p>강원도 속초시 조양동</p>
-                                <p>일출과 바다 전망이 아름다운 호텔.</p>
-                            </div>
-                        </div>
-
-                        {/* Add more hotel cards as needed */}
-                        <div className="hotel-card">
-                            <img src="https://via.placeholder.com/150" alt="Hotel" className="hotel-image" />
-                            <div className="hotel-info">
-                                <h4>2. BEST HOTEL</h4>
-                                <p>강원도 속초시 조양동</p>
-                                <p>일출과 바다 전망이 아름다운 호텔.</p>
-                            </div>
-                        </div>
-
-                        <div className="hotel-card">
-                            <img src="https://via.placeholder.com/150" alt="Hotel" className="hotel-image" />
-                            <div className="hotel-info">
-                                <h4>3. BEST HOTEL</h4>
-                                <p>강원도 속초시 조양동</p>
-                                <p>일출과 바다 전망이 아름다운 호텔.</p>
-                            </div>
-                        </div>
-                        
-                        <div className="hotel-card">
-                            <img src="https://via.placeholder.com/150" alt="Hotel" className="hotel-image" />
-                            <div className="hotel-info">
-                                <h4>3. BEST HOTEL</h4>
-                                <p>강원도 속초시 조양동</p>
-                                <p>일출과 바다 전망이 아름다운 호텔.</p>
-                            </div>
-                        </div>
-                        {/* Duplicate as needed for more hotels */}
+                        {hotels.length > 0 ? (
+                            hotels.map((hotel, index) => (
+                                <div key={index} className="hotel-card">
+                                    <img 
+                                        src={hotel.firstimage || "https://via.placeholder.com/150"} 
+                                        alt={hotel.title || "Hotel"} 
+                                        className="hotel-image" 
+                                    />
+                                    <div className="hotel-info">
+                                        <h4>{index + 1}. {hotel.title}</h4>
+                                        <p>주소 : {hotel.addr1 || "주소 정보 없음"}</p>
+                                        <p>전화번호 : {hotel.tel || "전화번호 정보 없음"}</p>
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <p>숙소 정보를 불러오는 중입니다...</p>
+                        )}
                     </div>
                 </div>
             </div>
-            {/* <Footer/> */}
+            <Footer/>
         </div>
     );
 };

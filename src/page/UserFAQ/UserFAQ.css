@@ -1,4 +1,4 @@
-/* Styles for the FAQ Page */
+
 .User-FAQ-Page {
     display: flex; 
     font-family: Arial, sans-serif;
@@ -12,16 +12,19 @@
 }
 .User-FAQ-title {
     text-align: center;
-    padding-left: 50px;
+    padding-left: 70px;
     margin-bottom: 5%;
+    
 }
 
 .FAQ-table {
+    margin-left: 30px;
+    width: 100%;
+    height: 500px;
     padding: 10px;
-    
+    /* background-color: red; */
 }
 .FAQ-table table {
-   
     width: 100%;
     border-collapse: collapse;
     
@@ -77,7 +80,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: #5A5ABC;
+    /* background-color: #5A5ABC; */
     padding: 20px;
     
   

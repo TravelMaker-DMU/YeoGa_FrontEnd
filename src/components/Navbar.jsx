@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import logo1 from '../images/yega1.png';
 import usericon from '../images/icon/usericon.png';
 import aaa from  '../images/aaa.png';
+import user from '../images/icon/icons8-user-96.png';
 
 
 const Navbar = () => {
@@ -43,9 +44,9 @@ const Navbar = () => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                <li><Link to="/">홈</Link></li>
                 <li><Link to="/about">테마</Link></li>
-                <li><Link to="/Trip">여행지</Link></li>
+                <li><Link to="/about">여행지 안내</Link></li>
+                <li><Link to="/Trip">숙소</Link></li>
                 <li><Link to="/content">고객센터</Link></li>
             </ul>
             
@@ -75,7 +76,7 @@ const Navbar = () => {
                 </div>
             )}
             <div className='user-icon'>
-                <img src={usericon} onClick={userPageClick}></img>
+                <img src={user} onClick={userPageClick}></img>
             </div>
             <button className="login-btn" onClick={handleLoginClick}>로그인</button>
         </nav>

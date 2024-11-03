@@ -9,6 +9,10 @@
     height: 300px;
     background-color: #ccc;
 }
+.trip-img {
+    width: 100%;
+    height: 300px;
+}
 
 /* Main content layout */
 .main-content {
@@ -16,6 +20,8 @@
     flex-wrap: wrap;
     width: 95%;
     margin: 20px auto;
+    margin-top: 100px;  
+    margin-bottom: 200px;
 }
 
 
@@ -69,19 +75,22 @@
 
 /* Hotels section styling */
 .hotels {
-    flex: 3; /* Larger space for the hotels section */
+    flex: 3; 
     padding-left: 20px;
-    width: 70%; /* Minimum width to avoid layout breaking on smaller screens */
-    
+    width: 70%;
+    /* display: flex;  */
+}
+
+
+.hotel-best {
+    display: flex;
 }
 
 .hotel-grid {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; /* Allows items to wrap to the next line */
-    margin-bottom: 20px;
+    flex-direction: column; /* 1열로 변경 */
+    gap: 20px; /* 각 카드 사이의 간격 추가 */
 }
-
 .hotel-image-placeholder {
     width: 23%;
     height: 150px;

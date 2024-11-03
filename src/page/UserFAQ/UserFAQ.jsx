@@ -6,11 +6,11 @@ import Searchicon from  '../../images/icon/icons8-search-50.png';
 const FAQPage = () => {
     const faqData = [
         { no: 1, category: '숙소예약', title: '여기 홈페이지 숙소예약 방법', date: '2024-09-01' },
-        { no: 2, category: '숙소예약', title: '여기 홈페이지 숙소예약 방법', date: '2024-09-01' },
-        { no: 3, category: '숙소예약', title: '여기 홈페이지 숙소예약 방법', date: '2024-09-01' },
-        { no: 4, category: '숙소예약', title: '여기 홈페이지 숙소예약 방법', date: '2024-09-01' },
-        { no: 5, category: '숙소예약', title: '여기 홈페이지 숙소예약 방법', date: '2024-09-01' },
-        { no: 6, category: '숙소예약', title: '여기 홈페이지 숙소예약 방법', date: '2024-09-01'}
+        { no: 2, category: '여행정보', title: '제주도 필수 여행지 가이드', date: '2024-08-20' },
+        { no: 3, category: '레스토랑', title: '서울 최고의 맛집 소개', date: '2024-08-22' },
+        { no: 4, category: '투어추천', title: '가을 단풍 명소 TOP 5', date: '2024-09-05' },
+        { no: 5, category: '축제정보', title: '2024년 전국 축제 일정', date: '	2024-09-10' },
+        { no: 6, category: '교통정보', title: '서울 교통편 완벽 가이드', date: '2024-09-15'}
     ];
 
     return (    
@@ -42,30 +42,9 @@ const FAQPage = () => {
                     </tbody>
                 </table>
             </div>
-            <div className='User-FAQ-Search-container'>
-                <div className='User-FAQ'>
-                    <img src={Searchicon} className='User-FAQ-Search-icon' ></img>
-             <form className='User-FAQ-Search-form'>
-               <input type='text'
-                className='User-FAQ-Search-text'
-                placeholder="검색해보세요" ></input>
-             </form>  
+
             </div>
-            </div>
-            </div>
-            <div className="User-FAQ-right-section">
-                <div className="faq-right-placeholder">
-                    <div className="image-placeholder">
-                        {/* This is a placeholder for the image */}
-                    </div>
-                    <div className="text-placeholder">
-                        {/* Placeholder for any additional information */}
-                    </div>
-                    <div className="extra-placeholder">
-                        {/* Placeholder for extra sections or widgets */}
-                    </div>
-                </div>
-            </div>
+           
         </div>
     );
 };
