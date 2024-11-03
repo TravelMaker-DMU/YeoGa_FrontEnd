@@ -14,11 +14,12 @@ const Trip = () => {
             <SearchBar />
 
             <div className="main-content">
-                {/* Filters Section */}
+        
+
                 <div className="filters">
                     <div className="filter-category">
                         <h4>숙소 평점</h4>
-                        <ul>
+                        <ul className='ratingcolor'>
                             <li>
                                 <input type="checkbox" id="rating5" />
                                 <label htmlFor="rating5">★★★★★</label>

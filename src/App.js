@@ -13,7 +13,6 @@ import Test1 from './page/Test1';
 import Join from './page/JoinPage/JoinStep1/Join';
 import JoinStep2 from './page/JoinPage/JoinStep2/JoinStep2';
 import WeatherApp from './page/WeatherPage/WeatherApp';
-import Aaaa from './Aaaa';
 
 
 
@@ -22,7 +21,6 @@ const App = () => {
     return (
         <Router>
             <Routes>
-                <Route path='/Aaaa' element={<Aaaa/>}/>
                 <Route path="/" element={<Home />} />
                 <Route path='/Login' element={<Login />} />
                 <Route path='/Trip' element={<Trip />} />

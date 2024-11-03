@@ -20,7 +20,7 @@ const GridLayout = () => {
                         MobileOS: 'ETC',
                         MobileApp: 'AppTest',
                         _type: 'json',
-                        areaCode: '4',
+                        areaCode: '6',
                         contentTypeId: '12',
                         listYN: 'Y'
                     }
