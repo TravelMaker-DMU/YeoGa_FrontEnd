@@ -13,7 +13,7 @@
 .overlay {
   position: absolute;
   top: 50%;
-  left: 50px;
+  left: 200px;
   transform: translateY(-50%);
   z-index: 1;
   color: white;
@@ -38,10 +38,12 @@
   display: flex;
   justify-content: center;
   overflow: hidden;
-  width: 80%; /* 슬라이더 너비를 줄임 */
-  height: 600px; /* 슬라이더 높이 조정 */
-  margin-left: auto;
+  width: 80%; /* 슬라이더 너비 */
+  height: 400px; /* 슬라이더 높이 */
+  height: 400px; /* 슬라이더 높이 조정 */
+  margin-left: 700px;
   margin-right: auto;
+  /* background-color: red; */
 }
 
 .slide {
