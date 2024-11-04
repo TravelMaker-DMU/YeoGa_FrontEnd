@@ -40,7 +40,14 @@ return(
     <form action="">
 
     <div className="Setting-page-form-div">
+        <div className='Setting-page-form-title'>
+          <div className='Setting-page-form-text'>
         <p className="Setting-page-file">이름</p>
+        </div>
+        <div className='Setting-page-form-button'>
+        <button className="Setting-page-file-button">수정하기</button>
+        </div>
+        </div>
         <input type="text" value='홍길동' />
     </div>
 
@@ -67,6 +74,7 @@ return(
  </div>
  </div>
  <div className="Setting-page-side">
+
     <div className='Setting-page-side-container'>
     <div className="Setting-page-side-title">활동 정보</div>
 
@@ -88,12 +96,8 @@ return(
         <div className='Setting-page-side-writteBy-inquiry'>문의</div>
     </div>  
     </div>
-   
-    <div className='Setting-page-aside'>
-        <div className='Setting-page-aside-section'>
-            aa
-        </div>
-        </div>
+    <div className='Setting-page-side-bottom'></div>
+ 
     </div>  
     
  </div>

@@ -7,8 +7,8 @@ function JoinStep2() {
   const [koreanName, setKoreanName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [birthdate, setBirthdate] = useState('');
+  const [email, setEmail] = useState('');
+  const [birthday, setBirthday] = useState('');
   const [tel, setTel] = useState('');
 
   const navigate = useNavigate();
@@ -23,10 +23,7 @@ function JoinStep2() {
 
   // 전화번호 형식 변환 함수
   const formatPhoneNumber = (value) => {
-    // 숫자만 남기기
     const onlyNumbers = value.replace(/\D/g, '');
-
-    // 010-xxxx-xxxx 형식 적용
     if (onlyNumbers.length < 4) {
       return onlyNumbers;
     } else if (onlyNumbers.length < 8) {
@@ -44,39 +41,30 @@ function JoinStep2() {
 
   // 회원가입 요청 처리 함수
   const handleSubmit = async (e) => {
-    e.preventDefault(); // 폼 제출 시 페이지 새로고침 방지
-  
-    if (password !== confirmPassword) {
-      alert("비밀번호가 일치하지 않습니다.");
-      return;
-    }
-  
-    
-    // username과 password만 FormData에 추가
+    e.preventDefault();
+
     const formData = new FormData();
     formData.append('username', username);
     formData.append('password', password);
-
-    for (let pair of formData.entries()) {
-      console.log(pair[0]+ ', ' + pair[1]); 
-    }
+    formData.append('email', email);
+    formData.append('birthday', birthday);
+    formData.append('tel', tel);
 
     const apiUrl = 'https://port-0-yeoga-backend-m1hgzlk8a26c4004.sel4.cloudtype.app';  
 
     try {
       const response = await fetch(`${apiUrl}/join`, {
-        method: 'POST', 
+        method: 'POST',
         credentials: 'include',
-        headers: {
-          
-        },
-        body: formData, 
+        body: formData,
       });
-
+  
       if (response.ok) {
         alert('회원가입이 성공적으로 완료되었습니다.');
+        navigate('/'); // 메인 페이지로 이동
+        
       } else {
-        const errorData = await response.json(); // 여기서는 text()로 읽어 오류 메시지 확인
+        const errorData = await response.json(); 
         console.error(`회원가입 실패: ${errorData}`);
         alert(`회원가입 실패: ${errorData}`);
       }
@@ -103,7 +91,6 @@ function JoinStep2() {
       </div>
 
       <form className="form-container" onSubmit={handleSubmit}>
-        {/* 한글 이름 입력 필드 */}
         <fieldset className="form-group">
           <label htmlFor="koreanName">한글 이름 *</label>
           <input
@@ -117,7 +104,6 @@ function JoinStep2() {
           />
         </fieldset>
         
-        {/* 아이디 입력 필드 */}
         <fieldset className="form-group">
           <label htmlFor="username">아이디 *</label>
           <input
@@ -131,7 +117,6 @@ function JoinStep2() {
           />
         </fieldset>
 
-        {/* 비밀번호 입력 필드 */}
         <fieldset className="form-group">
           <label htmlFor="password">비밀번호 *</label>
           <input
@@ -145,36 +130,33 @@ function JoinStep2() {
             required
           />
         </fieldset>
-        
+
         <fieldset className="form-group">
-          <label htmlFor="confirmPassword">비밀번호 확인 *</label>
+          <label htmlFor="email">이메일 *</label>
           <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            autoComplete="new-password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            placeholder="비밀번호를 한 번 더 입력해 주세요."
+            type="text"
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="이메일을 입력해 주세요."
             required
           />
         </fieldset>
 
-        {/* 생년월일 입력 필드 */}
         <fieldset className="form-group">
-          <label htmlFor="birthdate">생년월일 *</label>
+          <label htmlFor="birthday">생년월일 *</label>
           <input
             type="text"
-            id="birthdate"
-            name="birthdate"
-            value={birthdate}
-            onChange={(e) => setBirthdate(e.target.value)}
+            id="birthday"
+            name="birthday"
+            value={birthday}
+            onChange={(e) => setBirthday(e.target.value)}
             placeholder="생년월일을 입력해주세요(YYYY-MM-DD)"
             required
           />
         </fieldset>
 
-        {/* 전화번호 입력 필드 */}
         <fieldset className="form-group">
           <label htmlFor="tel">전화번호 *</label>
           <input
@@ -182,7 +164,7 @@ function JoinStep2() {
             id="tel"
             name="tel"
             value={tel}
-            onChange={handleTelChange} // 변경된 핸들러 적용
+            onChange={handleTelChange}
             placeholder="010-0000-0000"
             required
           />

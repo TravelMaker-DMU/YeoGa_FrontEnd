@@ -35,9 +35,11 @@ const Login = () => {
         const token = response.headers.get('Access');
         if (token) {
           console.log('토큰:', token); 
-          sessionStorage.setItem('token', token); // 토큰 저장
+          sessionStorage.setItem('accessToken', token);    // 토큰 저장
           alert('로그인 성공! 메인 페이지로 이동합니다.');
+          
           navigate('/'); // 메인 페이지로 이동
+         
         } else {
           alert('로그인 성공했으나 토큰이 반환되지 않았습니다.');
         }
