@@ -1,0 +1,124 @@
+/* General Page Styling */
+.trip-page {
+    font-family: Arial, sans-serif;
+    width: 100%;
+}
+
+.trip-image{
+    width: 100%;
+    height: 300px;
+    background-color: #ccc;
+}
+/* Main content layout */
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 20px auto;
+    /* height: 1200px;    */
+}
+
+
+.filters {
+    flex: 0.5; /* Allows filters to adjust size based on available space */
+    width: 20%;
+    border-right: 1px solid #ccc;
+    padding-right: 20px;
+    
+    
+}
+
+/* Filter category styling */
+.filter-category {
+    margin-bottom: 20px;
+}
+
+.filter-category h4 {
+    font-size: 18px; /* Slightly larger font for headers */
+    margin-bottom: 10px;
+}
+
+.filter-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.filter-category li {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.filter-category input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Hotels section styling */
+.hotels {
+    flex: 3; /* Larger space for the hotels section */
+    padding-left: 20px;
+    width: 70%; /* Minimum width to avoid layout breaking on smaller screens */
+    
+}
+
+.hotel-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    margin-bottom: 20px;
+}
+
+.hotel-image-placeholder {
+    width: 23%;
+    height: 150px;
+    background-color: #ccc;
+    margin-bottom: 20px;
+}
+
+/* Hotel list styling */
+.hotel-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.hotel-card {
+    display: flex;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    overflow: hidden; /* Ensures content doesn't overflow out of the card */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+}
+
+.hotel-card img {
+    width: 150px; /* Fixed size for the images */
+    height: auto;
+    object-fit: cover;
+}
+
+.hotel-info {
+    padding: 10px;
+}
+
+
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column; 
+    }
+    
+    .filters, .hotels {
+        width: 100%;
+        padding: 0;
+    }
+    
+    .hotel-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hotel-image-placeholder {
+        width: 90%;
+        height: 150px;
+        margin-bottom: 10px;
+    }
+}

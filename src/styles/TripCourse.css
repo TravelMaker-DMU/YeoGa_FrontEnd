@@ -1,0 +1,266 @@
+
+.slider {
+  position: relative;
+  max-width: 100%;
+  height: 500px;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-top: 200px;
+}
+
+.tripCourse-slider-background {
+  width: 100%;
+  height: 400px;
+  background-color: #8CA1EB;
+  z-index: 0;
+  margin-top: 100px;
+
+}
+
+.tripCourse-slider-title {
+  width: 600px;
+  height: 100px;
+  margin-left: 760px;
+  text-align: left;
+  display: inline-block;
+  position: relative; 
+  font-weight: bold;
+}
+
+.tripCourse-slider-title::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  position: absolute;
+   top: 50px;
+  left: 0;
+}
+
+.imageslider {
+  width: 600px;
+  height: 350px;
+  height: auto;
+  display: block;
+  margin-left: 10px;
+  position: absolute;
+  z-index: 10; 
+  border-radius: 10px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.tripCourse-slider-contents-list {
+  width: 600px;
+  height: 200px;
+  text-align: left;
+  position: relative;
+  bottom: 80px;
+  font-size: 25px;
+  margin-left: 760px;
+  width: calc(320px * 3);
+}
+
+.slider img {
+  width: 600px;
+  height: 350px;
+}
+
+
+.lodging {
+  width: 90%;
+  max-width: 1600px;
+  margin: 0 auto;
+  height: 600px;
+  /* overflow: hidden; */
+  /* border: solid 1px black; */
+  margin-top: 200px;
+  position: relative; /* relative로 변경하여 자식 요소의 absolute 배치를 가능하게 함 */  
+}
+
+.Trip-Course-hotel-title{
+  margin-left: 60px;
+  
+  
+}
+
+.slider-controls {
+  /* position: absolute; */
+  /* top: 50%;  */
+  margin-top: 170px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* 버튼을 양쪽 끝에 배치 */
+  transform: translateY(-50%); /* 정확한 세로 가운데 정렬 */
+  pointer-events: none;
+  z-index: 5;
+  /* position: relative; */
+  overflow: hidden;
+}
+
+
+
+.slider-button {
+  /* margin-bottom: 30px; */
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;  /* 원 모양으로 변경 */
+  padding: 10px;
+  cursor: pointer;
+  margin: 170px 10px;
+  font-size: 18px;
+  z-index: 20;
+  pointer-events: auto;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;  /* 버튼 크기 */
+  height: 40px;
+  transition: background-color 0.3s ease;
+  color: black;
+}
+
+
+.slider-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+
+.lodgings {
+  display: flex;
+  transition: transform 0.5s ease;
+  margin-top: 40px;
+  overflow: hidden;
+  width: calc(320px * 6);
+}
+.Card-container {
+  width: 100%;
+  overflow: hidden;
+  
+}
+
+.card {
+  flex: 0 0 300px;
+  margin-right: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.image-placeholder {
+  width: 100%;
+  height: 150px;
+  background-color: #ccc;
+}
+.card-image {
+  width: 100%;
+  height: 200px;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  /* background-color: red; */
+}
+
+.card-description, .card-rating{
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.star {
+  font-size: 16px;
+  padding-left: 5px; /* 간격을 줄였습니다 */
+}
+
+.full {
+  color: #FFD700; /* 금색 */
+}
+
+.empty {
+  color: #C0C0C0; /* 회색 */
+}
+
+.heart {
+  font-size: 30px;
+  float: right;
+  color: #ccc; /* 기본 하트 색상 */
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.heart.liked {
+  color: #ff0000; /* 클릭 시 빨간색으로 변경 */
+}
+
+.tripnews {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
+  /* border: solid 3px black; */
+}
+
+.tripcontainer {
+  display: flex;
+  align-items: flex-start;
+  width: 80%;
+}
+
+.tripimg {
+  width: 700px;
+  height: 400px;
+  background-color: lightgrey;
+  margin-right: 20px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.trip-title-name {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.triplist {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* background-color: black; */
+  width: 200px;
+  height: 300px;
+  /* background-color: red; */
+}
+
+.trip-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 400px;
+  /* background-c2lor: red; */
+  border-bottom: 2px solid #000; /* Add underline with solid border */
+}
+
+.trip-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+  
+}
+
+.trip-description {
+  font-size: 14px;
+  color: #555;
+  
+}
