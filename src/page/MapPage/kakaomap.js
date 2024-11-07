@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Map, Polyline, MapMarker, KakaoMapContext } from 'react-kakao-maps-sdk';
 import './maps.css';
+import logo from '../../images/yega1.png';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer/Footer'
 
-const KAKAO_API_KEY = 'REST API 키';
+const KAKAO_API_KEY = 'f2866ffa27f4403047eecb4cc9721bcd';
 const DIRECTIONS_URL = 'https://apis-navi.kakaomobility.com/v1/waypoints/directions';
 
 const fetchDirections = async (origin, destination, waypoints) => {
@@ -90,6 +93,8 @@ const RouteMap = ({ origin, destination, waypoints }) => {
   }
 
   return (
+    <div className="kakaomap">
+    <header className="logo"><Navbar /></header>
     <div className="container">
       <div className="title">경로 안내 지도</div>
       <div className="map-container">
@@ -123,6 +128,18 @@ const RouteMap = ({ origin, destination, waypoints }) => {
           )}
         </Map>
       </div>
+
+      <div className="location-info">
+        <h3>수원시</h3>
+        {waypoints.map((point, index) => (
+          <div key={index} className="location-item">
+            <h4>{`장소 ${index + 1}`}</h4>
+            <p>여행하는 장소의 간략한 설명</p>
+          </div>
+        ))}
+      </div>
+    </div>
+    <footer className="mapfooter"><Footer /></footer>
     </div>
   );
 };
