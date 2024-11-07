@@ -10,3 +10,22 @@
   width: 80%;
   background-color: #EFF3FF;
 }
+.User-page-section-container {
+  width: 70%;
+  height: 100%;
+  border: solid 1px black;
+}
+
+.User-page-section-inpormation {
+  /* position: absolute; */
+  margin: 20px;
+  width: 95%;
+  height: 15%;
+  /* background-color: red; */
+}
+
+.User-page-section-inpormation-title {
+  background-color: #ffff;
+  border-radius: 20px;
+  height: 30%;
+}

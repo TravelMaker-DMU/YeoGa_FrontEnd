@@ -45,7 +45,7 @@ const Navbar = () => {
                 onMouseLeave={handleMouseLeave}
             >
                 <li><Link to="/about">테마</Link></li>
-                <li><Link to="/about">여행지 안내</Link></li>
+                <li><Link to="/TripMap">여행지 안내</Link></li>
                 <li><Link to="/Trip">숙소</Link></li>
                 <li><Link to="/content">고객센터</Link></li>
             </ul>

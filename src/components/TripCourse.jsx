@@ -38,6 +38,7 @@ const TripCourse = () => {
     const [tripnews, setTripnews] = useState([]);
     const [error, setError] = useState(null);
     const [cardData, setCardData] = useState([]);  // cardData를 상태로 선언
+    const [newindex, setNewindex] = useState(0);
 
     useEffect(() => {
         const fetchTouristSpotsAndLodgings = async () => {
@@ -58,6 +59,7 @@ const TripCourse = () => {
                             eventStartDate: '20241001'
                         }
                     }),
+                    
                     axios.get("http://apis.data.go.kr/B551011/KorService1/searchStay1", {
                         params: {
                             serviceKey: serviceKey,
@@ -115,13 +117,16 @@ const TripCourse = () => {
         fetchTouristSpotsAndLodgings();
     }, []);
 
+      // 클릭 시 선택된 인덱스 업데이트
+      const handleItemClick = (index) => {
+        setNewindex(index);
+    };
+
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [tripcurrentIndex, setTripcurrentIndex] = useState(0);
     const currentBackgroundColor = hotelimages[tripcurrentIndex].backgroundColor;
 
-
-    //수정 필요!
     
     const prevSlide = () => {
         const newIndex = tripcurrentIndex === 0 ? hotelimages.length - 1 : tripcurrentIndex - 1;
@@ -156,6 +161,8 @@ const TripCourse = () => {
     };
     
 
+    
+
     const Card = ({ image, title, description, rating, tel }) => {
         const [isLiked, setIsLiked] = useState(false);
         const renderStars = (rating) => {
@@ -180,6 +187,9 @@ const TripCourse = () => {
             setIsLiked(!isLiked);
         };
 
+
+
+
         return (
             <div className="card">
             <div className="image-container">
@@ -197,14 +207,15 @@ const TripCourse = () => {
         );
     };
 
-    const Tripnews = ({ title, description }) => {
-        return (
-            <div className='trip-item'>
-                <div className='trip-title'>{title}</div>
-                <div className='trip-description'>{description}</div>
-            </div>
-        );
-    };
+
+    {/*  뉴스 데이터의 날짜 형식을 2024-11-30 형식으로 변환하는 함수 */}
+const newlistDate = (dateString) => {
+    if (dateString.length === 8) { // 예를 들어, "20241130"
+        return `${dateString.slice(0, 4)}-${dateString.slice(4, 6)}-${dateString.slice(6, 8)}`;
+    }   
+    return dateString;
+};
+
 
     return (
         <div className="trip-contents" style={{  transition: 'background-color 0.5s ease' }}>
@@ -222,6 +233,7 @@ const TripCourse = () => {
                 </div>
             </div>
         </div>
+        
         <div className='lodging'>
     <h2 className='Trip-Course-hotel-title'>최근 많이 방문된 숙소예요</h2>
     <div className="slider-controls">
@@ -246,23 +258,29 @@ const TripCourse = () => {
                 <div className='tripcontainer'>
                 <div className='tripimg'>
             {tripnews.length > 0 && (
-                <img 
-                    src={tripnews[0].firstimage || "https://via.placeholder.com/150"} 
-                    alt={tripnews[0].title} 
-                    className='tripnews-image' 
-                />
+               <img 
+               src={tripnews[newindex]?.firstimage || "https://via.placeholder.com/150"} 
+               alt={tripnews[newindex]?.title || "이미지 없음"} 
+               className='tripnews-image' 
+           />
             )}
         </div>
-
+ 
                    
                     <div className='triplist'>
                         <h2 className='trip-title-name'>이번주 여행소식</h2>
                         {error && <p>{error}</p>}   
                         {tripnews.map((trip, index) => (
-                            <div key={index} className='trip-item'>
+                            <div 
+                            key={index} 
+                            className={`trip-item ${index === newindex ? 'selected' : ''}`} 
+                            onClick={() => handleItemClick(index)} >
+
                                 <div className='trip-text'>
-                                    <div className='trip-title'>{trip.title}</div>
-                                    <div className='trip-description'>시작일 : {trip.eventstartdate} ~ 종료일: {trip.eventenddate}</div>
+                                <div className='trip-title'>{trip.title}</div>
+                            <div className='trip-description'>
+                                시작일 : {newlistDate(trip.eventstartdate)} ~ 종료일: {newlistDate(trip.eventenddate)}
+                            </div>
                                 </div>
                              
                                 
@@ -270,7 +288,7 @@ const TripCourse = () => {
                             
                             
                         ))}
-            </div>  
+            </div>   
         </div>
         </div>
         </div>
