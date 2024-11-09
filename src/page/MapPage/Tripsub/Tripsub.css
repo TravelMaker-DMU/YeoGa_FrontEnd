@@ -1,0 +1,26 @@
+
+.Tripsub-map {
+  border: solid 1px black;
+    display: flex;
+    width: 100%;
+  }
+  
+  .map-container {
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+  }
+  
+  .Tripsub-info {
+    width: 30%;
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+.Tripsub-info h2 {
+  text-align: center;
+}
+
+.Tripsub-info-list {
+  padding-left: 10px;
+}

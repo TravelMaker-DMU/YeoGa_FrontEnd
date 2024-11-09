@@ -16,17 +16,19 @@ height: 320px;
 }
 
 .GridLayout-boxone-title {
-    height: 20px;
-    white-space: nowrap; /* 텍스트가 넘치면 한 줄 유지 */
+    height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .GridLayout-boxone-descripts  {
-    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    font-size: clamp(0.5rem, 1.5vw, 1rem);
     font-size: 13px;
     border-bottom: solid 1px black;
-    /* line-height: 20px; */
-    white-space: nowrap; /* 텍스트가 넘치면 한 줄 유지 */
+    overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
         
 }
 

@@ -1,35 +1,61 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/TripCourse.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Seocho from '../images/Sokcho.jpg';
 
 
 const hotelimages = [
     {
-      hotelimage:  'https://cdn.pixabay.com/photo/2022/09/16/17/07/city-7459162_960_720.jpg',
-      hoteltitle:  '강원도 속초 여행코스 추천',
-      courselist: '1. 설악 케이블카',
-      courselist2: '2. 설악산',
-      
+        hotelimage: 'https://cdn.pixabay.com/photo/2022/09/16/17/07/city-7459162_960_720.jpg',
+        hoteltitle: '강원도 속초 여행코스 추천',
+        courselist: '1. 설악 케이블카',
+        courselist2: '2. 설악산',
+        waypoints: [
+            { lat: 38.2074, lng: 128.5911 }, // 예시 좌표 1
+            { lat: 38.2014, lng: 128.5931 }  // 예시 좌표 2
+            
+        ]
     },
-
     {
-      hotelimage:  'https://cdn.pixabay.com/photo/2021/08/09/11/38/island-6533073_1280.jpg',  
-      hoteltitle:  '전라남도 전주 여행코스 추천',
-      courselist: '1. 한옥마을',
-      courselist2: '2. 전주비빔밥 거리',
-      backgroundColor: '#FFCCCB',
+        hotelimage: 'https://cdn.pixabay.com/photo/2021/08/09/11/38/island-6533073_1280.jpg',
+        hoteltitle: '전라남도 전주 여행코스 추천',
+        courselist: '1. 한옥마을',
+        courselist2: '2. 전주비빔밥 거리',
+        backgroundColor: '#FFCCCB',
+        waypoints: [
+            { lat: 35.8142, lng: 127.1477 }, // 예시 좌표 1
+            { lat: 35.8210, lng: 127.1480 }  // 예시 좌표 2
+        ]
     },
-
     {
-      hotelimage:  'https://cdn.pixabay.com/photo/2023/04/20/11/55/village-7939562_960_720.jpg',
-      hoteltitle: '제주도 여행코스 추천',
-      courselist: '1. 한라산',
-      courselist2: '2. 성산일출봉',
-      backgroundColor: '#D3FFD3', // 배경색 추가
+        hotelimage: 'https://cdn.pixabay.com/photo/2023/04/20/11/55/village-7939562_960_720.jpg',
+        hoteltitle: '제주도 여행코스 추천',
+        courselist: '1. 한라산',
+        courselist2: '2. 성산일출봉',
+        backgroundColor: '#D3FFD3',
+        waypoints: [
+            { lat: 33.4996, lng: 126.5312 }, // 예시 좌표 1
+            { lat: 33.5097, lng: 126.4914 }, // 예시 좌표 2
+        ]
     }
-
 ];
 
+const tripsubData = [
+    {
+        name: "속초해수욕장",
+        address: "강원 속초시 조양동",
+        time: "매일 06:00 - 24:00 수영 가능시간(09:00~18:00)",
+        image: Seocho,
+        additionalLocations: [
+            { name: "공수체험시장", address: "강원도 속초시 공수체험시장", image: "https://example.com/image4.jpg" },
+            { name: "속초어촌박물관", address: "강원도 속초시 어촌박물관", image: "https://example.com/image5.jpg" },
+            { name: "속초항구", address: "강원도 속초시 항구로", image: "https://example.com/image6.jpg" }
+        ]
+    },
+    { name: "속초해변", address: "강원도 속초시", image: "https://example.com/image2.jpg" },
+    { name: "한옥마을", address: "전라남도 전주시", image: "https://example.com/image3.jpg" }
+];
 
 const TripCourse = () => {
     
@@ -39,6 +65,18 @@ const TripCourse = () => {
     const [error, setError] = useState(null);
     const [cardData, setCardData] = useState([]);  // cardData를 상태로 선언
     const [newindex, setNewindex] = useState(0);
+    const navigate = useNavigate();
+
+    const handleSlideClick = (index) => {
+        // 선택된 슬라이드에 맞는 경로 데이터와 여행지 정보를 전달하며 '/Tripsub'로 이동
+        navigate('/Tripsub', {
+            state: {
+                routeData: hotelimages[index].waypoints,
+                tripInfo: tripsubData[index] // 현재 슬라이드 인덱스에 해당하는 여행지 정보 전달
+            }
+        });
+    };
+   
 
     useEffect(() => {
         const fetchTouristSpotsAndLodgings = async () => {
@@ -127,25 +165,23 @@ const TripCourse = () => {
     const [tripcurrentIndex, setTripcurrentIndex] = useState(0);
     const currentBackgroundColor = hotelimages[tripcurrentIndex].backgroundColor;
 
-    
-    const prevSlide = () => {
-        const newIndex = tripcurrentIndex === 0 ? hotelimages.length - 1 : tripcurrentIndex - 1;
-        setTripcurrentIndex(newIndex);
-    };
+
+
+    // const handleSlideClick = (index) => {
+    //     // 선택된 슬라이드에 맞는 경로 데이터를 전달하며 '/Tripsub'로 이동
+    //     navigate('/Tripsub', { state: { routeData: hotelimages[index].waypoints } });
+    // };
 
     const nextSlide = () => {
-        const newIndex = tripcurrentIndex === hotelimages.length - 1 ? 0 : tripcurrentIndex + 1;
-        setTripcurrentIndex(newIndex);
+        setTripcurrentIndex((tripcurrentIndex + 1) % hotelimages.length);
     };
 
     useEffect(() => {
         const interval = setInterval(() => {
             nextSlide();
         }, 3000);
-
         return () => clearInterval(interval);
     }, [tripcurrentIndex]);
-   
 
 
     const prevCard = () => {
@@ -218,18 +254,18 @@ const newlistDate = (dateString) => {
 
 
     return (
-        <div className="trip-contents" style={{  transition: 'background-color 0.5s ease' }}>
-      <div className="slider">
+        <div className="trip-contents" style={{ transition: 'background-color 0.5s ease' }}>
+        <div className="slider" onClick={() => handleSlideClick(tripcurrentIndex)}>
             <img 
                 src={hotelimages[tripcurrentIndex].hotelimage} 
                 alt={hotelimages[tripcurrentIndex].hoteltitle || "slide"} 
                 className='imageslider' 
             />
-            <div className='tripCourse-slider-background'style={{ backgroundColor: currentBackgroundColor,transform: `translateX(-${tripcurrentIndex * 0}%)`, transition: 'transform 0.5s ease-in-out' }}>
+            <div className='tripCourse-slider-background' style={{ backgroundColor: hotelimages[tripcurrentIndex].backgroundColor }}>
                 <h2 className='tripCourse-slider-title'>{hotelimages[tripcurrentIndex].hoteltitle || "여행 코스추천"}</h2>
                 <div className='tripCourse-slider-contents-list'>
-                <p className='sliderread'>{hotelimages[tripcurrentIndex].courselist || ""}</p>
-                 <p className='sliderread'>{hotelimages[tripcurrentIndex].courselist2 || ""}</p>
+                    <p className='sliderread'>{hotelimages[tripcurrentIndex].courselist || ""}</p>
+                    <p className='sliderread'>{hotelimages[tripcurrentIndex].courselist2 || ""}</p>
                 </div>
             </div>
         </div>

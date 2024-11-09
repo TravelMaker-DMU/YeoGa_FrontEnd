@@ -1,23 +1,22 @@
 import React from "react";
 import '../TripMap/TripMap.css';
 import Navbar from "../../components/Navbar";
+import image31 from '../../images/image 31.png';
 // import "../styles/TripMap.css"; 
 
 const TripMap = () => {
     return (
         <div className="trip-map-container">
             <Navbar/>
-            <div className="header-banner">
-                <img src="your-banner-image-url" alt="배경 이미지" />
+
+            <div className="trip-map-container-box-img">
+                <img src={image31} alt="배경 이미지" className="trip-map-container-img" />
             </div>
 
-            <div className="content">
+            <div className="trip-map-section">
+                
                 <div className="map-section">
-                    <img
-                        src="your-map-image-url" // 지도 이미지
-                        alt="지도"
-                        className="map-image"
-                    />
+                    <div className="map-image"></div>
                 </div>
 
                 <div className="location-info">

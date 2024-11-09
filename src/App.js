@@ -14,6 +14,7 @@ import Join from './page/JoinPage/JoinStep1/Join';
 import JoinStep2 from './page/JoinPage/JoinStep2/JoinStep2';
 import TripMap from './page/TripMap/TripMap';
 import WeatherApp from './page/WeatherPage/WeatherApp';
+import Tripsub from './page/MapPage/Tripsub/Tripsub';
 
 
 
@@ -27,7 +28,7 @@ const App = () => {
                 <Route path='/Login' element={<Login />} />
                 <Route path='/Trip' element={<Trip />} />
                 <Route path='/TripMap' element={<TripMap />}/>
-                
+                <Route path='/Tripsub' element={<Tripsub />} />
                 <Route path='/User' element={
                      <PrivateRoute> <User/></PrivateRoute>}/>  
 

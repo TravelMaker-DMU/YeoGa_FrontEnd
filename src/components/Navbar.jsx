@@ -65,7 +65,7 @@ const Navbar = () => {
                             <li><Link to="/about/sub2">테마 서브메뉴 2</Link></li>
                         </div>
                         <div className='submenu-trip'>
-                            <li><Link to="/trip/sub1">여행지 서브메뉴 1</Link></li>
+                            <li><Link to="/tripsub">여행지 서브메뉴 1</Link></li>
                             <li><Link to="/trip/sub2">여행지 서브메뉴 2</Link></li>
                         </div>
                         <div className='submenu-content'>
