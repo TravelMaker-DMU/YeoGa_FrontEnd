@@ -16,14 +16,19 @@ height: 320px;
 }
 
 .GridLayout-boxone-title {
-    /* border: solid 1px black; */
-    height: 20px;
+    height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.GridLayout-boxone-descripts     {
+.GridLayout-boxone-descripts  {
+    font-size: clamp(0.5rem, 1.5vw, 1rem);
     font-size: 13px;
     border-bottom: solid 1px black;
-    /* line-height: 20px; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
         
 }
 
@@ -64,6 +69,8 @@ img {
 .box img {
     width: 100%;
     transition: transform 0.5s ease;
+    height: 200px; /* 고정된 높이를 지정하여 이미지 크기를 일정하게 유지 */
+    object-fit: cover; /* 이미지를 박스에 맞추어 잘라냄 */
 }
 
 .box img:hover {

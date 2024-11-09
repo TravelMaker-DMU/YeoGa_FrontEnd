@@ -11,18 +11,20 @@ const GridLayout = () => {
             try {
                 const serviceKey = process.env.REACT_APP_API_KEY_openapi;
                 const randomPage = Math.floor(Math.random() * 10) + 1; // 1부터 10까지의 랜덤 페이지 번호
-
+                const randomareaCode = Math.floor(Math.random() * 4) + 1;
+                
                 const response = await axios.get("http://apis.data.go.kr/B551011/KorService1/areaBasedList1", {
                     params: {
                         serviceKey: serviceKey,
                         numOfRows: 4,
-                        pageNo: randomPage, // 랜덤 페이지 번호 사용
+                        pageNo: randomPage, 
                         MobileOS: 'ETC',
                         MobileApp: 'AppTest',
                         _type: 'json',
-                        areaCode: '6',
+                        areaCode:  randomareaCode,
                         contentTypeId: '12',
-                        listYN: 'Y'
+                        listYN: 'Y',
+                        arrange: 'O'
                     }
                 });
 

@@ -45,7 +45,7 @@ const Navbar = () => {
                 onMouseLeave={handleMouseLeave}
             >
                 <li><Link to="/about">테마</Link></li>
-                <li><Link to="/about">여행지 안내</Link></li>
+                <li><Link to="/TripMap">여행지 안내</Link></li>
                 <li><Link to="/Trip">숙소</Link></li>
                 <li><Link to="/content">고객센터</Link></li>
             </ul>
@@ -65,7 +65,7 @@ const Navbar = () => {
                             <li><Link to="/about/sub2">테마 서브메뉴 2</Link></li>
                         </div>
                         <div className='submenu-trip'>
-                            <li><Link to="/trip/sub1">여행지 서브메뉴 1</Link></li>
+                            <li><Link to="/tripsub">여행지 서브메뉴 1</Link></li>
                             <li><Link to="/trip/sub2">여행지 서브메뉴 2</Link></li>
                         </div>
                         <div className='submenu-content'>

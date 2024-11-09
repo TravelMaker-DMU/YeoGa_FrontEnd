@@ -1,19 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import UserNavbar from '../components/UserNavbar/UserNavbar';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import '../styles/User.css';
 
-// useEffect, useState, useNavigate
+
 
 const User = () => {
- 
+  const [userInfo, setUserInfo] = useState(null);
+  // const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedUserInfo = JSON.parse(localStorage.getItem('user'));
+
+    if (!storedUserInfo) {
+      console.log("Aa");
+    } else {
+      setUserInfo(storedUserInfo); // 사용자 정보 상태에 저장
+    }
+  }, []);
+
+  if (!userInfo) {
+    return <div>로딩 중...</div>; // 사용자 정보 로딩 중 표시
+  } 
 
   return (
     <div className="User-page">
       <UserNavbar/>
       
       <div className='User-page-section'>
-        aa
+        <div className='User-page-section-container'>
+        <div className='User-page-section-inpormation'>
+          <h2>공지사항</h2>
+          <div className='User-page-section-inpormation-title'>
+            aa
+          </div>
+        </div>
+        </div>
       </div>
      
     

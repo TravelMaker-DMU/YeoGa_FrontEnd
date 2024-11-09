@@ -253,14 +253,22 @@
   flex-direction: column;
   margin-bottom: 10px;
   width: 400px;
+  cursor: pointer;
+  /* height: 100px;
+  overflow:hidden; */
+  font-weight: normal;
   /* background-c2lor: red; */
   border-bottom: 2px solid #000; /* Add underline with solid border */
+}
+.trip-item.selected {
+  font-weight: bold;
+  color: #333; /* 강조할 색상 */
+  /* 추가로 원하는 스타일 */
 }
 
 .trip-title {
   font-weight: bold;
   margin-bottom: 5px;
-  
 }
 
 .trip-description {
