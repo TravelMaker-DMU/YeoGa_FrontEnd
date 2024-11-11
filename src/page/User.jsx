@@ -11,17 +11,15 @@ const User = () => {
 
   useEffect(() => {
     const storedUserInfo = JSON.parse(localStorage.getItem('user'));
-
+  
     if (!storedUserInfo) {
-      console.log("Aa");
+      console.log("사용자 정보가 없습니다.");
+      // 필요한 경우, navigate를 통해 로그인 페이지로 이동하게 처리
+      // navigate('/login'); // 주석을 풀어서 사용할 수 있습니다.
     } else {
       setUserInfo(storedUserInfo); // 사용자 정보 상태에 저장
     }
   }, []);
-
-  if (!userInfo) {
-    return <div>로딩 중...</div>; // 사용자 정보 로딩 중 표시
-  } 
 
   return (
     <div className="User-page">

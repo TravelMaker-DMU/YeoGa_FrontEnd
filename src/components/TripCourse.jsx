@@ -3,18 +3,26 @@ import '../styles/TripCourse.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Seocho from '../images/Sokcho.jpg';
-
+import bluecafe from '../images/bluecafe.png';
+import hadomoon from '../images/hadomoon.png';
+import han from '../images/han.png';
+import duck from '../images/duck.png';
+import moon from '../images/moon.png';
+import jeju1 from '../images/jeju1.png';
+import jeju2 from '../images/jeju2.png';
+import jeju3 from '../images/jeju3.png';
 
 const hotelimages = [
     {
         hotelimage: 'https://cdn.pixabay.com/photo/2022/09/16/17/07/city-7459162_960_720.jpg',
         hoteltitle: '강원도 속초 여행코스 추천',
-        courselist: '1. 설악 케이블카',
-        courselist2: '2. 설악산',
+        courselist: '1. 속초 해수욕장',
+        courselist2: '2. 어나더 블루',
+        courselist2: '3. 하도문 속초',
+        origin: { lat: 38.1919258, lng: 128.6028730 }, // 출발지 좌표
+        destination: { lat: 38.165177, lng: 128.599455 }, // 목적지 좌표
         waypoints: [
-            { lat: 38.2074, lng: 128.5911 }, // 예시 좌표 1
-            { lat: 38.2014, lng: 128.5931 }  // 예시 좌표 2
-            
+            { lat: 38.2268, lng: 128.5873  } // 경유지 좌표
         ]
     },
     {
@@ -23,9 +31,11 @@ const hotelimages = [
         courselist: '1. 한옥마을',
         courselist2: '2. 전주비빔밥 거리',
         backgroundColor: '#FFCCCB',
+        origin: {lat: 35.8176, lng: 127.1521},
+        destination: {lat:35.8134, lng: 127.1477},
+        
         waypoints: [
-            { lat: 35.8142, lng: 127.1477 }, // 예시 좌표 1
-            { lat: 35.8210, lng: 127.1480 }  // 예시 좌표 2
+            { lat: 35.8477, lng: 127.1221 }  // 예시 좌표 2
         ]
     },
     {
@@ -34,9 +44,10 @@ const hotelimages = [
         courselist: '1. 한라산',
         courselist2: '2. 성산일출봉',
         backgroundColor: '#D3FFD3',
+        origin: {lat: 33.3223, lng: 126.8417},
+        destination: {lat : 33.4525, lng: 126.4895},
         waypoints: [
-            { lat: 33.4996, lng: 126.5312 }, // 예시 좌표 1
-            { lat: 33.5097, lng: 126.4914 }, // 예시 좌표 2
+            { lat: 33.2377, lng: 126.4252 }, // 예시 좌표 2
         ]
     }
 ];
@@ -48,13 +59,23 @@ const tripsubData = [
         time: "매일 06:00 - 24:00 수영 가능시간(09:00~18:00)",
         image: Seocho,
         additionalLocations: [
-            { name: "공수체험시장", address: "강원도 속초시 공수체험시장", image: "https://example.com/image4.jpg" },
-            { name: "속초어촌박물관", address: "강원도 속초시 어촌박물관", image: "https://example.com/image5.jpg" },
-            { name: "속초항구", address: "강원도 속초시 항구로", image: "https://example.com/image6.jpg" }
+            { name: "어나더블루", address: "강원 속초시 장사항해안길 61 속초카페 어나더블루", image: bluecafe, time: "오전 11:00 ~ 오후 10:00" },
+            { name: "하도문속초", address: "강원 속초시 하도문길 50 하도문 속초", image: hadomoon, time: "오전 11:00 ~ 오후 18:00" },
+         
         ]
     },
-    { name: "속초해변", address: "강원도 속초시", image: "https://example.com/image2.jpg" },
-    { name: "한옥마을", address: "전라남도 전주시", image: "https://example.com/image3.jpg" }
+    { name: "전주 한옥마을", address: "전북특별자치도 전주시 완산구 기린대로 99", time: "24시간 영업", image: han,
+        additionalLocations: [
+            {name:"덕진공원", address: "전북특별자치도 전주시 덕진구 덕진동1가 권삼득로 390", image: duck, time: "24시간 영업" },
+            {name:"풍남문", address: "전북 전주시 완산구 풍남문3길 1 풍남문", image: moon, time: "24시간 영업" }
+        ]
+     },
+    { name: "제주민속촌", address: "제주 서귀포시 표선면 민속해안로 631-34", time: "오전 08:30 ~ 오후 18:00", image: jeju1,  
+        additionalLocations: [
+            {name: "대포해안주상절리대", address:"제주 서귀포시 이어도로 36-24", image: jeju2, time: "오전 09:00 ~ 오후 17:10"},
+            {name: "제주도립박물관", address:"제주 제주시 1100로 2894-78", image: jeju3, time: "오전 09:00 ~ 오후 18:00"}
+        ]
+    }
 ];
 
 const TripCourse = () => {
@@ -71,7 +92,9 @@ const TripCourse = () => {
         // 선택된 슬라이드에 맞는 경로 데이터와 여행지 정보를 전달하며 '/Tripsub'로 이동
         navigate('/Tripsub', {
             state: {
-                routeData: hotelimages[index].waypoints,
+                origin: hotelimages[index].origin,
+                destination: hotelimages[index].destination,
+                waypoints: hotelimages[index].waypoints,
                 tripInfo: tripsubData[index] // 현재 슬라이드 인덱스에 해당하는 여행지 정보 전달
             }
         });
