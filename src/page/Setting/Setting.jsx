@@ -1,108 +1,119 @@
 import React, { useState, useEffect } from 'react';
+import api from '../../api'; // 전역 설정된 axios 인스턴스 import
 import UserNavbar from "../../components/UserNavbar/UserNavbar";
-// import Navbar from "../../components/Navbar";
 import '../Setting/Setting.css';
 
-
 const Setting = () => {
+  const [userInfo, setUserInfo] = useState({
+    name: '',
+    email: '',
+    tel: '',
+    birthday: '',
+    username: '',
+    password: ''
+  });
+  const [error, setError] = useState('');
 
-    const [currentDate, setCurrentDate] = useState('');
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        const username = sessionStorage.getItem('username');
+        if (!username) {
+          setError('로그인 정보가 없습니다. 다시 로그인 해주세요.');
+          return;
+        }
 
-    useEffect(() => {
-      const now = new Date();
-      const formattedDate = now.toLocaleString('ko-KR', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-      });
-      setCurrentDate(formattedDate); // 포맷된 날짜를 상태로 설정
-    }, []);
+        // 전역 설정된 api 인스턴스를 사용해 사용자 정보 가져오기
+        const response = await api.get(`/my/${username}`);
+        console.log(response.data);
 
+        setUserInfo(response.data);
+      } catch (error) {
+        console.error('사용자 정보를 가져오는 데 실패했습니다:', error);
+        setError('사용자 정보를 가져오는 데 실패했습니다.');
+      }
+    };
 
+    fetchUserInfo();
+  }, []);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserInfo(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
 
+  if (error) {
+    return <div>{error}</div>;
+  }
 
-return(
- <div className="Setting-page">
- {/* <Navbar/> */}
- <UserNavbar/>
- <div className="Setting-page-container">
-    <div className="Setting-page-container-section">
-    <div className="Setting-page-container-User-img">
-    </div>
-    <div className="Setting-page-container-User-imgchange">
-        프로필 변경하기
-    </div>
-    <div className="Setting-page-User">사용자 정보 </div>
-  
-    <form action="">
+  if (!userInfo) {
+    return <div>로딩 중...</div>;
+  }
 
-    <div className="Setting-page-form-div">
-        <div className='Setting-page-form-title'>
-          <div className='Setting-page-form-text'>
-        <p className="Setting-page-file">이름</p>
+  return (
+    <div className="Setting-page">
+      <UserNavbar />
+      <div className="Setting-page-container">
+        <div className="Setting-page-container-section">
+          <div className="Setting-page-container-User-img"></div>
+          <div className="Setting-page-container-User-imgchange">프로필 변경하기</div>
+          <div className="Setting-page-User">사용자 정보</div>
+
+          <form>
+            <div className="Setting-page-form-div">
+              <div className='Setting-page-form-title'>
+                <div className='Setting-page-form-text'>
+                  <p className="Setting-page-file">이름</p>
+                </div>
+              </div>
+              <input
+                type="text"
+                name="name"
+                value={userInfo.username || ''}
+                onChange={handleChange}
+                readOnly // 아이디는 수정 불가능하게 설정
+              />
+            </div>
+
+            <div className="Setting-page-form-div">
+              <p className="Setting-page-file">이메일</p>
+              <input
+                type="text"
+                name="email"
+                value={userInfo.email || ''}
+                onChange={handleChange}
+              />
+            </div>
+       
+          
+            
+            <div className="Setting-page-form-div">
+              <p className="Setting-page-file">전화번호</p>
+              <input
+                type="text"
+                name="tel"
+                value={userInfo.tel || ''}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="Setting-page-form-div">
+              <p className="Setting-page-file">생년월일</p>
+              <input
+                type="text"
+                name="birthday"
+                value={userInfo.birthday || ''}
+                onChange={handleChange}
+              />
+            </div>
+          </form>
         </div>
-        <div className='Setting-page-form-button'>
-        <button className="Setting-page-file-button">수정하기</button>
-        </div>
-        </div>
-        <input type="text" value='홍길동' />
+      </div>
     </div>
-
-    <div className="Setting-page-form-div">
-        <p className="Setting-page-file">이메일</p>
-        <input type="text" value= 'dongyang@naver.com' />
-    </div>
-    
-    <div className="Setting-page-form-div">
-        <p className="Setting-page-file">아이디</p>
-         <input type="text" value='user'/>
-    </div>
-
-    <div className="Setting-page-form-div">
-        <p className="Setting-page-file">비밀번호</p>
-         <input type="text" value= '1234' />
-    </div>
-  </form>
-
-  {/* <div className="Setting-page-button-container">
-  <button className="Setting-page-button-cancel">취소</button>
-  <button className="Setting-page-button-cancel">저장</button>
-  </div> */}
- </div>
- </div>
- <div className="Setting-page-side">
-
-    <div className='Setting-page-side-container'>
-    <div className="Setting-page-side-title">활동 정보</div>
-
-    <div className="Setting-page-side-section">
-       <div className="Setting-page-side-signupDate">가입일
-         <div className="Setting-page-side-signipDate-value">{currentDate} </div>   
-    </div>
-
-    <div className="updateDate">최신 업데이트일
-        <div className='Setting-page-side-updateDate-value'>{currentDate}</div>
-        </div>    
-    </div>
-
-    <div className='Setting-page-side-writtenBy'>
-        <div className='Setting-page-side-writtenBy-title'>작성</div>
-
-        <div className='Setting-page-side-writteBy-article'>게시글</div>
-        <div className='Setting-page-side-writteBy-comment'>댓글</div>
-        <div className='Setting-page-side-writteBy-inquiry'>문의</div>
-    </div>  
-    </div>
-    <div className='Setting-page-side-bottom'></div>
- 
-    </div>  
-    
- </div>
-)
-
-}
+  );
+};
 
 export default Setting;

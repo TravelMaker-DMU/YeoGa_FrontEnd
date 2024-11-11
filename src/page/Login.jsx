@@ -36,6 +36,7 @@ const Login = () => {
         if (token) {
           console.log('토큰:', token); 
           sessionStorage.setItem('accessToken', token);    // 토큰 저장
+          sessionStorage.setItem('username', username); // username도 저장
           alert('로그인 성공! 메인 페이지로 이동합니다.');
           
           navigate('/'); // 메인 페이지로 이동
