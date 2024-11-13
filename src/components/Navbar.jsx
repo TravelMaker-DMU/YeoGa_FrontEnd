@@ -44,10 +44,10 @@ const Navbar = () => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                <li><Link to="/about">테마</Link></li>
-                <li><Link to="/Trip1">여행지 안내</Link></li>
+                <li>테마</li>
+                <li>여행지 안내</li>
                 <li><Link to="/Trip">숙소</Link></li>
-                <li><Link to="/content">고객센터</Link></li>
+                <li>고객센터</li>
             </ul>
             
             {showSubmenu && (
@@ -57,20 +57,20 @@ const Navbar = () => {
                 >
                     <ul className="submenu">
                         <div className='submenu-home'>
-                            <li><Link to="/home/sub1">홈 서브메뉴 1</Link></li>
-                            <li><Link to="/home/sub2">홈 서브메뉴 2</Link></li>
+                            <li>홈 서브메뉴1 </li>
+                            <li>홈 서브메뉴 2</li>
                         </div>
                         <div className='submenu-about'>
-                            <li><Link to="/about/sub1">테마 서브메뉴 1</Link></li>
-                            <li><Link to="/about/sub2">테마 서브메뉴 2</Link></li>
+                            <li>테마 서브메뉴 1</li>
+                            <li>테마 서브메뉴 2</li>
                         </div>
                         <div className='submenu-trip'>
-                            <li><Link to="/trip/sub1">여행지 서브메뉴 1</Link></li>
-                            <li><Link to="/trip/sub2">여행지 서브메뉴 2</Link></li>
+                            <li>여행지 서브메뉴 1</li>
+                            <li>여행지 서브메뉴 2</li>
                         </div>
                         <div className='submenu-content'>
-                            <li><Link to="/content/sub1">고객센터 서브메뉴 1</Link></li>
-                            <li><Link to="/content/sub2">고객센터 서브메뉴 2</Link></li>
+                            <li>고객센터 서브메뉴 1</li>
+                            <li>고객센터 서브메뉴 2</li>
                         </div>
                     </ul>
                 </div>
