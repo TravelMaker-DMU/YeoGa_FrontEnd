@@ -190,7 +190,7 @@ function CustomToolbar({ label, onNavigate, onView, view }) {
           <button onClick={() => onView('day')} className={view === 'day' ? 'rbc-active' : ''}>Day</button>
           <button onClick={() => onView('agenda')} className={view === 'agenda' ? 'rbc-active' : ''}>Agenda</button>
         </span>
-      </div>
+      </div>  
     </div>
   );
 }

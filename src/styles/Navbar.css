@@ -38,6 +38,7 @@
   position: relative;
   justify-content: center; /* 중앙 정렬 */
   margin-left: 250px;
+  cursor: pointer;
 }
 
 .nav-links li {
@@ -57,7 +58,6 @@
   left: 0;
   width: 100%;
   background: rgba(0, 0, 0, 0.3);
-
   z-index: 4;
   display: flex;
   justify-content: center; /* 서브메뉴 중앙 정렬 */
@@ -66,6 +66,7 @@
 
 /* 서브메뉴 스타일 */
 .submenu {
+  cursor: pointer;
   padding-left: 60px;
   list-style: none;
   /* padding: 0; */
@@ -74,7 +75,7 @@
   flex-wrap: wrap; /* 서브메뉴가 여러 줄로 나올 때 줄바꿈 */
   gap: 50px; /* 서브메뉴 아이템 간의 간격 */
   max-width: 1200px; /* 최대 너비 설정 */
-  margin: 0 auto; /* 가운데 정렬 */
+  margin: 0 auto; /* 가운데 정렬 */ 
 }
 
 .submenu li {
