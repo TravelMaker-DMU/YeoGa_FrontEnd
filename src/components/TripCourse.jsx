@@ -18,7 +18,7 @@ const hotelimages = [
         hoteltitle: '강원도 속초 여행코스 추천',
         courselist: '1. 속초 해수욕장',
         courselist2: '2. 어나더 블루',
-        courselist2: '3. 하도문 속초',
+        courselist3: '3. 하도문 속초',
         origin: { lat: 38.1919258, lng: 128.6028730 }, // 출발지 좌표
         destination: { lat: 38.165177, lng: 128.599455 }, // 목적지 좌표
         waypoints: [
@@ -28,8 +28,9 @@ const hotelimages = [
     {
         hotelimage: 'https://cdn.pixabay.com/photo/2021/08/09/11/38/island-6533073_1280.jpg',
         hoteltitle: '전라남도 전주 여행코스 추천',
-        courselist: '1. 한옥마을',
-        courselist2: '2. 전주비빔밥 거리',
+        courselist: '1. 전주 한옥마을',
+        courselist2: '2. 덕진공원',
+        courselist3: '3. 풍남문',
         backgroundColor: '#FFCCCB',
         origin: {lat: 35.8176, lng: 127.1521},
         destination: {lat:35.8134, lng: 127.1477},
@@ -41,8 +42,9 @@ const hotelimages = [
     {
         hotelimage: 'https://cdn.pixabay.com/photo/2023/04/20/11/55/village-7939562_960_720.jpg',
         hoteltitle: '제주도 여행코스 추천',
-        courselist: '1. 한라산',
-        courselist2: '2. 성산일출봉',
+        courselist: '1. 제주민속촌',
+        courselist2: '2. 대포해안주상절리대',
+        courselist3: '3. 제주도립박물관',
         backgroundColor: '#D3FFD3',
         origin: {lat: 33.3223, lng: 126.8417},
         destination: {lat : 33.4525, lng: 126.4895},
@@ -159,7 +161,6 @@ const TripCourse = () => {
                     description: lodging.addr1 || '주소 정보 없음',
                     tel: lodging.tel || '전화번호 정보 없음',  // 전화번호 추가
                     rating: '평점 없음',
-                      
                     category: '관광호텔'
                 }));
                 const shuffledData = formattedData.sort(() => Math.random() - 0.5);
@@ -289,6 +290,7 @@ const newlistDate = (dateString) => {
                 <div className='tripCourse-slider-contents-list'>
                     <p className='sliderread'>{hotelimages[tripcurrentIndex].courselist || ""}</p>
                     <p className='sliderread'>{hotelimages[tripcurrentIndex].courselist2 || ""}</p>
+                    <p className='sliderread'>{hotelimages[tripcurrentIndex].courselist3 || ""}</p>
                 </div>
             </div>
         </div>

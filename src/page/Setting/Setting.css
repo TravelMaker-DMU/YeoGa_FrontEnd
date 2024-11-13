@@ -49,6 +49,7 @@
 }
 .Setting-page-form-text{
     width: 100px;
+   
     /* border: solid 1px black; */
 }
 
@@ -63,10 +64,11 @@
     /* width: 500px; */
     /* border: solid 1px blue; */
 }
-.Setting-page-file-button{
+.Setting-page-form-update{
     /* padding-left: 100px; */
     height: 30px;
     font-size: 10px;
+    text-align: center;
     /* justify-content: right; */
 }
 

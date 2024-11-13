@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 const KAKAO_API_KEY = '892b3fa8ad217de4b2ca0cae7c1ca67b';
 
 
-
 const fetchDirections = async (origin, destination, waypoints) => {
     try {
         const response = await axios.post(
