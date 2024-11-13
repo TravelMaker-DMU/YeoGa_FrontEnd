@@ -2,10 +2,10 @@ import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 import { useNavigate } from 'react-router-dom';
-import logo from  '../images/yega-logo.png';
 import logo1 from '../images/yega1.png';
 import usericon from '../images/icon/usericon.png';
-
+import aaa from  '../images/aaa.png';
+import user from '../images/icon/icons8-user-96.png';
 
 
 const Navbar = () => {
@@ -18,7 +18,7 @@ const Navbar = () => {
     };
 
     const userPageClick = () => {
-        navigate('/User');
+        navigate('/User/Setting');
     }
 
     const handleMouseEnter = () => {
@@ -36,17 +36,17 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
-            
+
             <div className="logo">   
-             <img src={logo1} alt="logo" className="Home-logo"/>  
+          <Link to = "/"><img src={aaa} alt="logo" className="Home-logo"/> </Link>    
             </div>
             <ul className="nav-links"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                <li><Link to="/">홈</Link></li>
                 <li><Link to="/about">테마</Link></li>
-                <li><Link to="/Trip">여행지</Link></li>
+                <li><Link to="/Trip1">여행지 안내</Link></li>
+                <li><Link to="/Trip">숙소</Link></li>
                 <li><Link to="/content">고객센터</Link></li>
             </ul>
             
@@ -76,7 +76,7 @@ const Navbar = () => {
                 </div>
             )}
             <div className='user-icon'>
-                <img src={usericon} onClick={userPageClick}></img>
+                <img src={user} onClick={userPageClick}></img>
             </div>
             <button className="login-btn" onClick={handleLoginClick}>로그인</button>
         </nav>

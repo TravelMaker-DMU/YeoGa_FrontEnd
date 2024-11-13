@@ -1,119 +1,211 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/TripCourse.css';
-
-
-// 여행소식 api 키 필요
-// 숙소카드쪽 api 키 필요 
-
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Seocho from '../images/Sokcho.jpg';
+import bluecafe from '../images/bluecafe.png';
+import hadomoon from '../images/hadomoon.png';
+import han from '../images/han.png';
+import duck from '../images/duck.png';
+import moon from '../images/moon.png';
+import jeju1 from '../images/jeju1.png';
+import jeju2 from '../images/jeju2.png';
+import jeju3 from '../images/jeju3.png';
 
 const hotelimages = [
     {
-      hotelimage:  'https://cdn.pixabay.com/photo/2022/09/16/17/07/city-7459162_960_720.jpg',
-      hoteltitle:  '강원도 속초 여행코스 추천',
-      courselist: '1. 설악 케이블카',
-      courselist2: '2. 설악산',
-      
-    },
-
-    {
-      hotelimage:  'https://cdn.pixabay.com/photo/2021/08/09/11/38/island-6533073_1280.jpg',  
-      hoteltitle:  '전라남도 전주 여행코스 추천',
-      courselist: '1. 한옥마을',
-      courselist2: '2. 전주비빔밥 거리',
-      backgroundColor: '#FFCCCB',
-    },
-
-    {
-      hotelimage:  'https://cdn.pixabay.com/photo/2023/04/20/11/55/village-7939562_960_720.jpg',
-      hoteltitle: '제주도 여행코스 추천',
-      courselist: '1. 한라산',
-      courselist2: '2. 성산일출봉',
-      backgroundColor: '#D3FFD3', // 배경색 추가
-    }
-
-];
-
-const cardData = [
-    {
-        image: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA3MDJfMjU3%2FMDAxNjU2NzcxMzIyMDM0.EUzWzqrzKga2_kXU33jdke7qHox4iCc60fZz5VADjvMg.81V6O9Ks-ZjFL7rPOk3Ip7-N9WsGqzIjqTfbByX_5NIg.JPEG.ydy8104%2FScreenshot_20220702-231424_Google1.jpg&type=sc960_832', 
-        title: '신라스테이 여수',
-        description: '전남 여수시 수정3길 8',
-        rating: 4,
+        hotelimage: 'https://cdn.pixabay.com/photo/2022/09/16/17/07/city-7459162_960_720.jpg',
+        hoteltitle: '강원도 속초 여행코스 추천',
+        courselist: '1. 속초 해수욕장',
+        courselist2: '2. 어나더 블루',
+        courselist3: '3. 하도문 속초',
+        origin: { lat: 38.1919258, lng: 128.6028730 }, // 출발지 좌표
+        destination: { lat: 38.165177, lng: 128.599455 }, // 목적지 좌표
+        waypoints: [
+            { lat: 38.2268, lng: 128.5873  } // 경유지 좌표
+        ]
     },
     {
-        image: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxODExMDlfNDUg%2FMDAxNTQxNzU2ODM2MjUw.iVbl03XggTtjzm4lyfa4JVhUzWf9yqmiK0CIu8bFQDQg.ChxpiLBmIVhRvuuSZHuLBaq9_D-PfLSNHFTwV1c-TDYg.PNG.kimggones2%2F%25B1%25B9%25B3%25BB_%25C8%25A3%25C5%25DA_%25BC%25F8%25C0%25A7007.png&type=sc960_832',
-        title: 'FOOD',
-        description: 'a nationwide tour of good restaurants',
-        rating: '4점',
+        hotelimage: 'https://cdn.pixabay.com/photo/2021/08/09/11/38/island-6533073_1280.jpg',
+        hoteltitle: '전라남도 전주 여행코스 추천',
+        courselist: '1. 전주 한옥마을',
+        courselist2: '2. 덕진공원',
+        courselist3: '3. 풍남문',
+        backgroundColor: '#FFCCCB',
+        origin: {lat: 35.8176, lng: 127.1521},
+        destination: {lat:35.8134, lng: 127.1477},
+        
+        waypoints: [
+            { lat: 35.8477, lng: 127.1221 }  // 예시 좌표 2
+        ]
     },
     {
-        image: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAzMjNfOTEg%2FMDAxNjE2NDg2NDgxOTc0.WUR1a42Mg1KDNjjYbUGY3W5ohh5TjEou7neudPHB-gAg.9gzysiUuQCNRuOt3xkY3AuItrFcSF4vdbLG0zLYTTcAg.JPEG.sue11ksy%2FKakaoTalk_20210323_104415872_06.jpg&type=sc960_832',
-        title: 'FOOD',
-        description: 'a nationwide tour of good restaurants',
-        rating: '4점',
-    },
-    {
-        image: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAzMjNfOTEg%2FMDAxNjE2NDg2NDgxOTc0.WUR1a42Mg1KDNjjYbUGY3W5ohh5TjEou7neudPHB-gAg.9gzysiUuQCNRuOt3xkY3AuItrFcSF4vdbLG0zLYTTcAg.JPEG.sue11ksy%2FKakaoTalk_20210323_104415872_06.jpg&type=sc960_832',
-        title: 'FOOD',
-        description: 'a nationwide tour of good restaurants',
-        rating: '4점',
-    },
-    
-    {
-        image: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAzMjNfOTEg%2FMDAxNjE2NDg2NDgxOTc0.WUR1a42Mg1KDNjjYbUGY3W5ohh5TjEou7neudPHB-gAg.9gzysiUuQCNRuOt3xkY3AuItrFcSF4vdbLG0zLYTTcAg.JPEG.sue11ksy%2FKakaoTalk_20210323_104415872_06.jpg&type=sc960_832',
-        title: 'FOOD',
-        description: 'a nationwide tour of good restaurants',
-        rating: '4점',
-    },
-    {
-        image: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2FMjAxOTA4MTlfMTMz%2FMDAxNTY2MTk0ODY2NTEw.Znk-_Ykdq6e_LJ73nbkC30s5FMmV_4gpMLFGAQ63Zf8g.Wh4ykH7OP0lNH8GVNibM2Yl83-9MYaKPAG176TYY3Cwg.JPEG%2FIiUNoBCh9LHxAy0hJGQOtJfZRPL0.jpg&type=sc960_832',
-        title: 'FOOD',
-        description: 'a nationwide tour of good restaurants',
-        rating: '4점',
+        hotelimage: 'https://cdn.pixabay.com/photo/2023/04/20/11/55/village-7939562_960_720.jpg',
+        hoteltitle: '제주도 여행코스 추천',
+        courselist: '1. 제주민속촌',
+        courselist2: '2. 대포해안주상절리대',
+        courselist3: '3. 제주도립박물관',
+        backgroundColor: '#D3FFD3',
+        origin: {lat: 33.3223, lng: 126.8417},
+        destination: {lat : 33.4525, lng: 126.4895},
+        waypoints: [
+            { lat: 33.2377, lng: 126.4252 }, // 예시 좌표 2
+        ]
     }
 ];
 
-const tripnewsData = [
+const tripsubData = [
     {
-        title: '서울특별시 -',
-        description: '2024년 서커스 마술 여행'
+        name: "속초해수욕장",
+        address: "강원 속초시 조양동",
+        time: "매일 06:00 - 24:00 수영 가능시간(09:00~18:00)",
+        image: Seocho,
+        additionalLocations: [
+            { name: "어나더블루", address: "강원 속초시 장사항해안길 61 속초카페 어나더블루", image: bluecafe, time: "오전 11:00 ~ 오후 10:00" },
+            { name: "하도문속초", address: "강원 속초시 하도문길 50 하도문 속초", image: hadomoon, time: "오전 11:00 ~ 오후 18:00" },
+         
+        ]
     },
-    {
-        title: '서울특별시 -',
-        description: '2024년 서커스 마술 여행'
-    },
-    {
-        title: '서울특별시 -',
-        description: '2024년 서커스 마술 여행'
+    { name: "전주 한옥마을", address: "전북특별자치도 전주시 완산구 기린대로 99", time: "24시간 영업", image: han,
+        additionalLocations: [
+            {name:"덕진공원", address: "전북특별자치도 전주시 덕진구 덕진동1가 권삼득로 390", image: duck, time: "24시간 영업" },
+            {name:"풍남문", address: "전북 전주시 완산구 풍남문3길 1 풍남문", image: moon, time: "24시간 영업" }
+        ]
+     },
+    { name: "제주민속촌", address: "제주 서귀포시 표선면 민속해안로 631-34", time: "오전 08:30 ~ 오후 18:00", image: jeju1,  
+        additionalLocations: [
+            {name: "대포해안주상절리대", address:"제주 서귀포시 이어도로 36-24", image: jeju2, time: "오전 09:00 ~ 오후 17:10"},
+            {name: "제주도립박물관", address:"제주 제주시 1100로 2894-78", image: jeju3, time: "오전 09:00 ~ 오후 18:00"}
+        ]
     }
 ];
 
 const TripCourse = () => {
+    
+
+    {/* 수정중 */}
+    const [tripnews, setTripnews] = useState([]);
+    const [error, setError] = useState(null);
+    const [cardData, setCardData] = useState([]);  // cardData를 상태로 선언
+    const [newindex, setNewindex] = useState(0);
+    const navigate = useNavigate();
+
+    const handleSlideClick = (index) => {
+        // 선택된 슬라이드에 맞는 경로 데이터와 여행지 정보를 전달하며 '/Tripsub'로 이동
+        navigate('/Tripsub', {
+            state: {
+                origin: hotelimages[index].origin,
+                destination: hotelimages[index].destination,
+                waypoints: hotelimages[index].waypoints,
+                tripInfo: tripsubData[index] // 현재 슬라이드 인덱스에 해당하는 여행지 정보 전달
+            }
+        });
+    };
+   
+
+    useEffect(() => {
+        const fetchTouristSpotsAndLodgings = async () => {
+            try {
+                const serviceKey = process.env.REACT_APP_API_KEY_openapi;
+    
+                // 두 API 요청을 병렬로 실행
+                const [festivalResponse, lodgingResponse] = await Promise.all([
+                    axios.get("http://apis.data.go.kr/B551011/KorService1/searchFestival1", {
+                        params: {
+                            serviceKey: serviceKey,
+                            numOfRows: 6,
+                            MobileOS: 'ETC',
+                            MobileApp: 'AppTest',
+                            _type: 'json',
+                            arrange: 'R',
+                            listYN: 'Y',
+                            eventStartDate: '20241001'
+                        }
+                    }),
+                    
+                    axios.get("http://apis.data.go.kr/B551011/KorService1/searchStay1", {
+                        params: {
+                            serviceKey: serviceKey,
+                            numOfRows: 10,
+                            pageNo: 2,
+                            MobileOS: 'ETC',
+                            MobileApp: 'AppTest',
+                            _type: 'json',
+                            listYN: 'Y',
+                            arrange: 'O',
+                        }
+                    })
+                ]);
+    
+                // API 응답 처리
+                if (festivalResponse.data.response.body.items) {
+                    setTripnews(festivalResponse.data.response.body.items.item);
+                    
+                } else {
+                    setError("축제 데이터를 불러오지 못했습니다.");
+                }
+    
+                if (lodgingResponse.data.response.body.items) {
+                    const lodgings = lodgingResponse.data.response.body.items.item;
+                    // 필터링 조건을 약간 완화하거나 필요한 조건에 맞게 조정
+                    const filteredLodgings = lodgings.filter(lodging => 
+                        lodging.contenttypeid === '32' &&
+                        lodging.cat1 === 'B02' &&
+                        lodging.cat2 === 'B0201'
+                        // 특정 조건 완화 또는 제거
+                    );
+                
+                const formattedData = filteredLodgings.map(lodging => ({
+                    image: lodging.firstimage || 'https://via.placeholder.com/150',
+                    title: lodging.title,
+                    description: lodging.addr1 || '주소 정보 없음',
+                    tel: lodging.tel || '전화번호 정보 없음',  // 전화번호 추가
+                    rating: '평점 없음',
+                    category: '관광호텔'
+                }));
+                const shuffledData = formattedData.sort(() => Math.random() - 0.5);
+                setCardData(shuffledData);
+            } else {
+                setError("숙박 데이터를 불러오지 못했습니다.");
+            }
+
+
+            } catch (err) {
+                setError("API 요청 중 오류가 발생했습니다.");
+                console.error(err);
+            }
+        };
+    
+        fetchTouristSpotsAndLodgings();
+    }, []);
+
+      // 클릭 시 선택된 인덱스 업데이트
+      const handleItemClick = (index) => {
+        setNewindex(index);
+    };
+
+
     const [currentIndex, setCurrentIndex] = useState(0);
     const [tripcurrentIndex, setTripcurrentIndex] = useState(0);
     const currentBackgroundColor = hotelimages[tripcurrentIndex].backgroundColor;
 
 
-    //수정 필요!
-    
-    const prevSlide = () => {
-        const newIndex = tripcurrentIndex === 0 ? hotelimages.length - 1 : tripcurrentIndex - 1;
-        setTripcurrentIndex(newIndex);
-    };
+
+    // const handleSlideClick = (index) => {
+    //     // 선택된 슬라이드에 맞는 경로 데이터를 전달하며 '/Tripsub'로 이동
+    //     navigate('/Tripsub', { state: { routeData: hotelimages[index].waypoints } });
+    // };
 
     const nextSlide = () => {
-        const newIndex = tripcurrentIndex === hotelimages.length - 1 ? 0 : tripcurrentIndex + 1;
-        setTripcurrentIndex(newIndex);
+        setTripcurrentIndex((tripcurrentIndex + 1) % hotelimages.length);
     };
 
     useEffect(() => {
         const interval = setInterval(() => {
             nextSlide();
         }, 3000);
-
         return () => clearInterval(interval);
     }, [tripcurrentIndex]);
-   
 
 
     const prevCard = () => {
@@ -129,7 +221,9 @@ const TripCourse = () => {
     };
     
 
-    const Card = ({ image, title, description, rating }) => {
+    
+
+    const Card = ({ image, title, description, rating, tel }) => {
         const [isLiked, setIsLiked] = useState(false);
         const renderStars = (rating) => {
             const fullStars = Math.floor(rating); // 가득 찬 별의 개수
@@ -153,82 +247,111 @@ const TripCourse = () => {
             setIsLiked(!isLiked);
         };
 
+
+
+
         return (
             <div className="card">
-                <div className="image-container">
-                    <img src={image} alt={title} className="card-image" />
-                </div>
-                <div className="card-content">
-                    <div className="card-title">{title}
-                    <span 
-                        className={`heart ${isLiked ? 'liked' : ''}`} 
-                        onClick={toggleHeart}> ♡
-                    </span>
-                    </div>
-                
-                    <div className="card-description">주소 : {description}</div>
-                    <div className="card-rating">평점 : {renderStars(rating)}</div>
-                   
-                </div>
+            <div className="image-container">
+                <img src={image} alt={title} className="card-image" />
             </div>
+            <div className="card-content">
+                <div className="card-title">{title}
+                    <span className={`heart ${isLiked ? 'liked' : ''}`} onClick={toggleHeart}> ♡</span>
+                </div>
+                <div className="card-description">주소: {description}</div>
+                <div className="card-tel">전화번호: {tel}</div> 
+            </div>
+        </div>
+        
         );
     };
 
-    const Tripnews = ({ title, description }) => {
-        return (
-            <div className='trip-item'>
-                <div className='trip-title'>{title}</div>
-                <div className='trip-description'>{description}</div>
-            </div>
-        );
-    };
+
+    {/*  뉴스 데이터의 날짜 형식을 2024-11-30 형식으로 변환하는 함수 */}
+const newlistDate = (dateString) => {
+    if (dateString.length === 8) { // 예를 들어, "20241130"
+        return `${dateString.slice(0, 4)}-${dateString.slice(4, 6)}-${dateString.slice(6, 8)}`;
+    }   
+    return dateString;
+};
+
 
     return (
-        <div className="trip-contents" style={{  transition: 'background-color 0.5s ease' }}>
-      <div className="slider">
+        <div className="trip-contents" style={{ transition: 'background-color 0.5s ease' }}>
+        <div className="slider" onClick={() => handleSlideClick(tripcurrentIndex)}>
             <img 
                 src={hotelimages[tripcurrentIndex].hotelimage} 
                 alt={hotelimages[tripcurrentIndex].hoteltitle || "slide"} 
                 className='imageslider' 
             />
-            <div className='tripCourse-slider-background'style={{ backgroundColor: currentBackgroundColor,transform: `translateX(-${tripcurrentIndex * 0}%)`, transition: 'transform 0.5s ease-in-out' }}>
+            <div className='tripCourse-slider-background' style={{ backgroundColor: hotelimages[tripcurrentIndex].backgroundColor }}>
                 <h2 className='tripCourse-slider-title'>{hotelimages[tripcurrentIndex].hoteltitle || "여행 코스추천"}</h2>
                 <div className='tripCourse-slider-contents-list'>
-                <p className='sliderread'>{hotelimages[tripcurrentIndex].courselist || ""}</p>
-                 <p className='sliderread'>{hotelimages[tripcurrentIndex].courselist2 || ""}</p>
+                    <p className='sliderread'>{hotelimages[tripcurrentIndex].courselist || ""}</p>
+                    <p className='sliderread'>{hotelimages[tripcurrentIndex].courselist2 || ""}</p>
+                    <p className='sliderread'>{hotelimages[tripcurrentIndex].courselist3 || ""}</p>
                 </div>
             </div>
         </div>
+        
+        <div className='lodging'>
+    <h2 className='Trip-Course-hotel-title'>최근 많이 방문된 숙소예요</h2>
+    <div className="slider-controls">
+        <button onClick={prevCard} disabled={currentIndex === 0} className="slider-button">◀</button>
+        <div className='Card-container'>
 
-            <div className='lodging'>
-                <h2 className='Trip-Course-hotel-title'>최근 많이 방문된 숙소예요</h2>
-                <div className="slider-controls">
-                    <button onClick={prevCard} disabled={currentIndex === 0} className="slider-button">◀</button>
-                    <div className='Card-container'>
-                    <div className="lodgings" style={{ transform: `translateX(-${currentIndex * 320}px)` }}>
-                        {cardData.map((card, index) => (
-                            <Card key={index} image={card.image} title={card.title} description={card.description} rating={card.rating} />
-                        ))}
-                        </div>
-                    </div>
-                    <button onClick={nextCard} disabled={currentIndex === cardData.length - 1} className="slider-button">▶</button>
-                </div>
+            <div className="lodgings" style={{ transform: `translateX(-${currentIndex * 320}px)` }}>
+                {cardData.length > 0 ? (
+                    cardData.map((card, index) => (
+                       <Card key={index} image={card.image} title={card.title} description={card.description} tel={card.tel}  />
+                    ))
+                ) : (
+                    <p>숙소 정보를 불러오는 중입니다...</p>
+                )}
             </div>
+        </div>
+        <button onClick={nextCard} disabled={currentIndex === cardData.length - 1 || cardData.length === 0} className="slider-button">▶</button>
+    </div>
+</div>
 
             <div className='tripnews'>
                 <div className='tripcontainer'>
-                    <div className='tripimg'>
-                        {/* Placeholder for image or other content */}
-                    </div>
+                <div className='tripimg'>
+            {tripnews.length > 0 && (
+               <img 
+               src={tripnews[newindex]?.firstimage || "https://via.placeholder.com/150"} 
+               alt={tripnews[newindex]?.title || "이미지 없음"} 
+               className='tripnews-image' 
+           />
+            )}
+        </div>
+ 
                    
                     <div className='triplist'>
                         <h2 className='trip-title-name'>이번주 여행소식</h2>
-                        {tripnewsData.map((trip, index) => (
-                            <Tripnews key={index} title={trip.title} description={trip.description} />
+                        {error && <p>{error}</p>}   
+                        {tripnews.map((trip, index) => (
+                            <div 
+                            key={index} 
+                            className={`trip-item ${index === newindex ? 'selected' : ''}`} 
+                            onClick={() => handleItemClick(index)} >
+
+                                <div className='trip-text'>
+                                <div className='trip-title'>{trip.title}</div>
+                            <div className='trip-description'>
+                                시작일 : {newlistDate(trip.eventstartdate)} ~ 종료일: {newlistDate(trip.eventenddate)}
+                            </div>
+                                </div>
+                             
+                                
+                            </div>
+                            
+                            
                         ))}
-                    </div>
-                </div>
-            </div>
+            </div>   
+        </div>
+        </div>
         </div>
     );
 };

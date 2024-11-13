@@ -1,12 +1,20 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode'; // 여기 수정
 
 const PrivateRoute = ({ children }) => {
-  const token = localStorage.getItem('accessToken'); // 또는 sessionStorage 사용 가능
+  const token = sessionStorage.getItem('accessToken');
 
   if (!token) {
-    
-    return <Navigate   to="/Login" />;
+    return <Navigate to="/Login" />;
+  }
+
+  try {
+    const decoded = jwtDecode(token);
+    console.log(decoded); 
+  } catch (error) {
+    console.error('Invalid token:', error);
+    return <Navigate to="/Login" />;
   }
 
   return children;

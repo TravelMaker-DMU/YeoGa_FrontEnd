@@ -12,6 +12,7 @@
   z-index: 3;
   justify-content: space-between;
   height: 40px;
+  
   /* margin: 0 auto; */
 }
 
@@ -36,7 +37,7 @@
   gap: 100px; /* 메뉴 항목 간의 간격 */
   position: relative;
   justify-content: center; /* 중앙 정렬 */
-  margin-left: 130px;
+  margin-left: 250px;
 }
 
 .nav-links li {
@@ -65,12 +66,13 @@
 
 /* 서브메뉴 스타일 */
 .submenu {
+  padding-left: 60px;
   list-style: none;
-  padding: 0;
+  /* padding: 0; */
   display: flex;
   justify-content: center; /* 서브메뉴 항목을 중앙에 정렬 */
   flex-wrap: wrap; /* 서브메뉴가 여러 줄로 나올 때 줄바꿈 */
-  gap: 40px; /* 서브메뉴 아이템 간의 간격 */
+  gap: 50px; /* 서브메뉴 아이템 간의 간격 */
   max-width: 1200px; /* 최대 너비 설정 */
   margin: 0 auto; /* 가운데 정렬 */
 }
@@ -92,6 +94,8 @@
 
 
 .user-icon img {
+  margin-left: 250px;
+  /* background-color: red; */
  width: 40px;
  height: 40px;
  cursor: pointer;

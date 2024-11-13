@@ -6,198 +6,26 @@
   font-family: Arial, sans-serif;
 }
 
-.calendar-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 80%; 
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+.User-page-section {
+  width: 80%;
   background-color: #EFF3FF;
 }
-
-.User-calendar-container-header-title {
- 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  
-  
-}
-.calendar-container-header {
-  background-color: white;
-  width: 100%;
-  height: 200px;
-  margin-bottom: 20px;
-}
-
-.User-calender-button {
-  background-color: #4A90E2;
-  border: none;
-  border-radius: 8px;
-  padding: 10px;
-  margin: 0 20px;
-  cursor: pointer;
-  color: white;
-  font-size: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.User-calender-button:hover {
-  background-color: #357ABD;
-}
-
-.calendar-title {
-  color: #333;
-  font-size: 24px;
-  font-weight: bold;
-}
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr); /* 7일로 구성된 그리드 */
-  gap: 0px; /* 셀 사이의 간격 */
-  width: 100%;
-  background-color: white;
-  padding: 10px;
+.User-page-section-container {
+  width: 70%;
   height: 100%;
-
+  border: solid 1px black;
 }
 
-.calendar-day {
-  background-color: #f0f4f8; /* 요일 배경색 */
-  color: #333; /* 요일 글자 색상 */
-  text-align: center;
-  font-weight: bold;
-  font-size: 14px; /* 글자 크기 */
-  padding: 10px 0;
+.User-page-section-inpormation {
+  /* position: absolute; */
+  margin: 20px;
+  width: 95%;
+  height: 15%;
+  /* background-color: red; */
 }
 
-.calendar-day:nth-child(1){
-  border-radius: 10px 0px 0px 0px;
-}
-.calendar-day:nth-child(7) {
-  border-radius: 0px 10px 0px 0px;
-}
-
-
-.calendar-date {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: end;
-  height: 100px; /* 박스 높이 */
-  color: #333;
-  font-size: 16px;
-  font-weight: bold;
-  border: 1px solid #ddd; /* 박스 테두리 */
-  background-color: white;
-  position: relative;
-  padding: 5px;
-}
-
-.calendar-date:hover {
-  background-color: #4A90E2;
-  color: white;
-}
-
-.calendar-date.highlight {
-  background-color: #4A90E2;
-  color: white;
-  border-radius: 5px;
-}
-
-.sunday {
-  color: #E74C3C;
-}
-
-.saturday {
-  color: #3498DB;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.User-Right-Sidebar-Container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 25%;
-  padding: 20px;
-  background-color: #5A5ABC;
-  color: white;
-}
-
-.Weather-widget {
-  background-color: #333;
-  padding: 15px;
-  width: 90%;
-  height: 45%;
-  text-align: center;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.Weather-title-Container {
-  width: 100%;
-  text-align: center;
-  height: 20px;
-  font-size: 20px;
-  font-weight: bold;
-}
-.User-Weather-section {
-  display: flex;
-  width: 100%;
-  height: 100px;
-}
-
-.User-weather-icon {
-  width: 50%;
- 
-  font-size: 60px;
-  margin: 10px 0;
-}
-.User-Weather-temperature {
-  width: 40%;
-  height: 50px;
-  font-size: 30px;
-}
-
-.User-Weather-section2 {
-  width: 100%;
-  height: o auto;
-  background-color: red;
-}
-.schedule-widget {
-  background-color: #333;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  color: #fff;
-}
-
-.schedule-item {
-  background-color: #444;
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  color: #ddd;
-  font-size: 14px;
-  text-align: center;
+.User-page-section-inpormation-title {
+  background-color: #ffff;
+  border-radius: 20px;
+  height: 30%;
 }

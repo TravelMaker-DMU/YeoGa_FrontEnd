@@ -1,0 +1,130 @@
+.Setting-page {
+    display: flex;
+
+}
+
+.Setting-page-container {
+    width: 50%;
+    height: auto;
+    padding: 20px;
+    background-color: #EFF3FF;
+    /* border: solid 1px black; */
+}
+
+.Setting-page-container-section {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    width: 94%;
+    padding: 20px;
+}
+
+.Setting-page-container-User-img{
+    width: 100px;
+    height: 100px;
+    margin-left: 43%;
+    background-color: gray;
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+
+.Setting-page-container-User-imgchange{
+    text-align: center;
+    cursor: pointer;
+}
+
+.Setting-page-User{
+    font-weight: bold;
+    font-size: 20px;
+    width: 100%;
+    /* border-bottom: solid 1px black; */
+    margin-bottom: 30px;
+    padding-top: 30px;
+}
+
+.Setting-page-form-div {
+    /* float: right; */
+    width: 600px;
+    height: 100px;
+
+}
+.Setting-page-form-text{
+    width: 100px;
+   
+    /* border: solid 1px black; */
+}
+
+.Setting-page-form-title{
+    width: 560px;
+    display: flex;
+    /* background-color: red; */
+}
+.Setting-page-form-button{
+    margin-left: 370px;
+    padding-top: 10px;
+    /* width: 500px; */
+    /* border: solid 1px blue; */
+}
+.Setting-page-form-update{
+    /* padding-left: 100px; */
+    height: 30px;
+    font-size: 10px;
+    text-align: center;
+    /* justify-content: right; */
+}
+
+.Setting-page-button-container {
+    width: 100%;
+    /* background-color: red; */
+}
+
+.Setting-page-side {
+    padding: 20px;
+    width: 25%;
+    height:800px;
+    background-color: #EFF3FF;
+    /* border: solid 1px black; */
+}
+.Setting-page-side-container{
+    height: 360px;
+    padding: 20px;
+    background-color: white;
+}
+
+.Setting-page-side-title {
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+    margin-bottom: 40px;
+    /* background-color: red; */
+}
+
+.Setting-page-side-section {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    /* background-color: red; */
+}
+
+.Setting-page-side-signipDate-value, .Setting-page-side-updateDate-value {
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.updateDate {
+    margin-left: 30px;
+}
+
+.Setting-page-side-writtenBy{
+    flex-direction: column;
+    line-height: 30px;
+}
+
+.Setting-page-side-writtenBy-title {
+    margin-bottom: 10px;
+}
+
+.Setting-page-side-bottom {
+    margin-top: 30px;
+    height: 300px;
+    background-color: white;
+}

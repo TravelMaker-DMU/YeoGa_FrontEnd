@@ -16,7 +16,6 @@ const Footer = () => {
 
         <div className="Footer-main-content">
           <div className="Footer-main-left">
-          <h2 className="Footer-main-title">여행 계획을 대신 짜주는 사이트</h2>
           <div className="Footer-main-left-text">
             <p>주소: 서울특별시 구로구 경인로 445</p>
             <p>전화: 02-2610-1700</p>
