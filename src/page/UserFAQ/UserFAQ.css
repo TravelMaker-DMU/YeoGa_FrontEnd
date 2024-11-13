@@ -26,10 +26,16 @@
 }
 .FAQ-table table {
     width: 100%;
-    border-collapse: collapse;
-    
-    
-    
+    border-collapse: collapse;    
+}
+.User-FAQ-write-box-button {
+    width: 100%;
+    margin-bottom: 10px;
+
+}
+.User-FAQ-write-button {
+    float: right;
+    /* width: 100%; */
 }
 
 .FAQ-table th, .FAQ-table td {

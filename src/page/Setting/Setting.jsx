@@ -68,6 +68,9 @@ const Setting = () => {
                 <div className='Setting-page-form-text'>
                   <p className="Setting-page-file">이름</p>
                 </div>
+                <div className='Setting-page-form-button'>
+                <button className='Setting-page-form-update'>수정하기</button>
+                </div>
               </div>
               <input
                 type="text"

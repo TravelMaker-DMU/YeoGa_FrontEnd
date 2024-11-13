@@ -29,12 +29,12 @@ const App = () => {
                 <Route path='/Trip' element={<Trip />} />
                 <Route path='/TripMap' element={<TripMap />}/>
                 <Route path='/Tripsub' element={<Tripsub />} />
-                <Route path='/User' element={
-                     <PrivateRoute> <User/></PrivateRoute>}/>  
+                <Route path='/User/Setting' element={
+                     <PrivateRoute> <Setting/></PrivateRoute>}/>  
 
                 <Route path='/User/FAQ' element={<UserFAQ/>} />
                 <Route path='/User/Calendars' element={<Calendars/>}/>    
-                <Route path='/User/Setting' element={<Setting/>}/>
+                {/* <Route path='/User/Setting' element={<Setting/>}/> */}
                 <Route path='/Join' element={<Join />} />
                 <Route path='/Join/step2' element={<JoinStep2 />} />
                 <Route path='/Weather' element={<WeatherApp />} />
