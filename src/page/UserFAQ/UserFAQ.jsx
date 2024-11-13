@@ -13,7 +13,7 @@ const FAQPage = () => {
     ]);
 
     const [isWriting, setIsWriting] = useState(false);
-    const [newFaq, setNewFaq] = useState({ category: '', title: '', date: '' });
+    const [newFaq, setNewFaq] = useState({ category: '', title: '' });
 
     const handleWriteClick = () => {
         setIsWriting(true);
@@ -33,7 +33,11 @@ const FAQPage = () => {
             date: new Date().toISOString().split('T')[0] // 현재 날짜 설정
         };
         setFaqData([...faqData, newFaqEntry ]); // 최신 글이 상단에 오도록 추가
-        setNewFaq({ category: '', title: '', date: '' });
+        setNewFaq({ category: '', title: '' });
+        setIsWriting(false);
+    };
+
+    const closeModal = () => {
         setIsWriting(false);
     };
 
@@ -45,32 +49,41 @@ const FAQPage = () => {
                     <h1 className='User-FAQ-title-text'>FAQ</h1>
                 </div>
                 <div className='User-FAQ-write-box-button'>
-                <button onClick={handleWriteClick} className="User-FAQ-write-button">글쓰기</button>
+                    <button onClick={handleWriteClick} className="User-FAQ-write-button">글쓰기</button>
                 </div>
+
                 {isWriting && (
-                    <form onSubmit={handleSubmit} className="User-FAQ-form">
-                        <div>
-                            <label>카테고리</label>
-                            <input
-                                type="text"
-                                name="category"
-                                value={newFaq.category}
-                                onChange={handleChange}
-                                required
-                            />
+                    <div className="modal-overlay">
+                        <div className="modal-content">
+                            <button className="modal-close-button" onClick={closeModal}>X</button>
+                            <form onSubmit={handleSubmit} className="User-FAQ-form">
+                                <div>
+                                    <label>카테고리</label>
+                                    <input
+                                        type="text"
+                                        name="category"
+                                        value={newFaq.category}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label>제목</label>
+                                    <input
+                                        type="text"
+                                        name="title"
+                                        value={newFaq.title}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div className="modal-buttons">
+                                    <button type="submit" className="User-FAQ-submit-button">등록</button>
+                                    <button type="button" className="User-FAQ-close-button" onClick={closeModal}>닫기</button>
+                                </div>
+                            </form>
                         </div>
-                        <div>
-                            <label>제목</label>
-                            <input
-                                type="text"
-                                name="title"
-                                value={newFaq.title}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
-                        <button type="submit" className="User-FAQ-submit-button">등록</button>
-                    </form>
+                    </div>
                 )}
 
                 <div className="FAQ-table">

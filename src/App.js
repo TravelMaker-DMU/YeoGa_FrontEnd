@@ -4,7 +4,7 @@ import Home from './page/Home';
 import './App.css';
 import Login from './page/Login';
 import Trip from './page/Trip';
-import User from './page/User';
+// import User from './page/User';
 import PrivateRoute from './components/Protected Route/Protected';
 import Calendars from './page/Schedule/Calendars';
 import UserFAQ from './page/UserFAQ/UserFAQ';
