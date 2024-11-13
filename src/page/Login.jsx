@@ -4,6 +4,7 @@ import Footer from "../components/Footer/Footer";
 import '../styles/Login.css';
 import kakaoicon from "../images/icon/kakao-icon.png";
 import facebookicon from "../images/icon/facebook.png";
+import naver from '../images/icon/naver-icon-style (1).png';
 import yega from '../images/aaa.png';
 import { json, useNavigate } from "react-router-dom";
 
@@ -107,9 +108,9 @@ const Login = () => {
           <div className="social-login">
             <div className="social-icons">
               <div className="facebook-box">
-                <img src={facebookicon} alt="Facebook" className="facebook" />
+                <img src={naver} alt="Facebook" className="facebook" />
                 <div className="facebook-text">
-                  <p>페이스북 로그인</p>
+                  <p>네이버 로그인</p>
                 </div>
               </div>
 
