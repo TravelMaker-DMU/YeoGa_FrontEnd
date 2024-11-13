@@ -6,11 +6,16 @@ import './JoinStep1.css';
 const Join  = () => {
 
    const [agree, setAgree] = useState(false);
+   const [agree2, setAgree2] = useState(false);
    const navigate = useNavigate();
    
    const handleAgreeChange = (e) => {
      setAgree(e.target.checked);
    };
+
+   const handleAgreeChange2 = (e) => {
+    setAgree2(e.target.checked);
+  };
 
    const nextJoinStep2 = () => {
     if (agree) {
@@ -94,8 +99,8 @@ const Join  = () => {
           <input 
             type="checkbox" 
             id="agree" 
-            checked={agree} 
-            onChange={handleAgreeChange}
+            checked={agree2} 
+            onChange={handleAgreeChange2}
           />
           <label className="Join-label" htmlFor="agree">약관동의(필수)</label>
         </div>
