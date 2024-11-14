@@ -45,6 +45,24 @@ const Setting = () => {
     }));
   };
 
+
+  
+  const handleChangenum = (e) => {
+    const { name, value } = e.target;
+    setUserInfo(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleTelChange = (e) => {
+    const changenumber = e.replace(/\D/g, '');
+    if(changenumber.length < 4){
+      return changenumber;
+    }else if(changenumber.length < 8){
+      // return `${}`
+    }
+  }
   if (error) {
     return <div>{error}</div>;
   }
@@ -99,7 +117,7 @@ const Setting = () => {
                 type="text"
                 name="tel"
                 value={userInfo.tel || ''}
-                onChange={handleChange}
+                onChange={handleTelChange}
               />
             </div>
 
