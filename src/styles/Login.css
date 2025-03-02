@@ -1,131 +1,127 @@
+/* Login.css */
 .Login {
-    /* display: flex; */
-    height: 100vh;
-  }
-  
-  .background-image {
-    flex: 1;
-    background-image: url('https://cdn.pixabay.com/photo/2024/02/09/13/03/beach-8563083_1280.jpg');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-    width: 100%;
-    height: 600px;
-    position: relative;
-    z-index: 0;
-  }
-  .content {
-    width: 30%;
-    /* border: solid 1px black; */
-    margin-right: 500px;
-    text-align: left;
-  }
-  .content h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
-  }
-  
-  .content p {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-  
-  .login-form {
-    width: 500px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 1;
-    position: absolute;
-    margin-left: 900px;
-    
- 
-  }
-  
-  .login-form h2 {
- 
-    color: black;
-  }
-  
-  .input-group {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  
-  .input-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .Loginbutton{
-    
-    width: 110%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  .social-login {
-    text-align: center;
-    margin-top: 20px;
-    color: black;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  /* background-color: red; */
+  width: 100%; 
+  margin: 0 auto;
+}
 
-  .google {
-    width: 25px;
-    height: 25px;
-    /* border: solid 3px black; */
-  }
-  .kakao {
-    width: 35px;
-    height: 28px;
-    /* border: solid 3px black; */
-  }
-  .facebook {
-    width: 30px;
-    height: 30px;
-    /* border: solid 3px black; */
-  }
-  
-  .social-icons img {
-  
-    margin: 0 10px;
-    cursor: pointer;
-    /* width: 25px;
-    height: 25px; */
-  }
-  
-  .social-icons img:hover {
-    opacity: 0.7;
-  }
-  
-  .login-form p {
-    margin-top: 15px;
-    color: black;
-  }
-  
-  .login-form a {
-    color: #007BFF;
-    text-decoration: none;
-  }
-  
-  .login-form a:hover {
-    text-decoration: underline;
-  }
+.background-image {
+  width: 100%;
+  height: 700px;
+  max-width: 500px;
+  padding: 20px;
+  /* box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
+  /* background-color: #ffffff; */
+  /* background-color: red; */
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 100px;
+  /* margin-left: 30%; */
+  /* margin-bottom: 30px; */
+  /* padding-bottom: 10px; */
+  /* display: block; */
+  /* align-items: center; */
+}
+
+.content {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.loginform {
+  width: 100%;
+  /* background-color: red; */
+}
+
+.input-group {
+  margin-bottom: 15px; 
+}
+
+.input-group input {
+  width: 100%;
+  /* padding: 10px; */
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  /* padding-left: 10px; */
+}
+
+.Loginbutton {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.social-login {
+  margin: 20px 0;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  /* border: solid 1px ; */
+}
+
+.social-icons img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  /* background-color: red; */
+}
+
+.login-box {
+  width: 100%;
+  text-align: left;
+  /* background-color: red; */
+  display: flex;
+}
+
+.login-pass, .login-join {
+  padding-left: 5px;
+}
+
+.facebook-box {
+  width: 50%;
+  background-color: #00BF18;
+}
+.facebook {
+  float: left;
+  padding-top: 10px;
+}
+
+.facebook-text p {
+  color: white;
+  font-weight: bold;
+  margin-right: 20px;
+}
+.kakao-box {
+  width: 50%;
+  background-color: #FFEB3B;
+}
+.kakao {
+  float: left;
+  padding-top: 10px;
+
+}
+
+.kakao-text p {
+  color: white;
+  font-weight: bold;
+  margin-right: 30px;
+}

@@ -1,105 +1,69 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import UserNavbar from '../components/UserNavbar/UserNavbar';
+// import { useNavigate } from 'react-router-dom';
 import '../styles/User.css';
 
-const User = () => {
-    return (
-        <div className="user-page">
-            {/* Sidebar Section */}
-            <div className="sidebar">
-                <div className="sidebar-header">
-                    <div className="user-profile">
-                        <img src="https://via.placeholder.com/50" alt="User" className="user-image" />
-                        <p className="username">UserName</p>
-                    </div>
-                </div>
-                <nav className="sidebar-nav">
-                    <ul>
-                        <li><i className="icon-clock"></i>Reservation</li>
-                        <li><i className="icon-bookmark"></i>Bookmark</li>
-                        <li><i className="icon-calendar"></i>Calendar</li>
-                        <li><i className="icon-chat"></i>1:1 AI CHAT</li>
-                        <li><i className="icon-faq"></i>FAQ</li>
-                        <li><i className="icon-settings"></i>Settings</li>
-                        <li><i className="icon-logout"></i>Logout</li>
-                    </ul>
-                </nav>
-            </div>
 
-            {/* Main Content Section */}
-            <div className="main-content">
-                <div className="calendar-section">
-                    <h2>JUNE</h2>
-                    <table className="calendar">
-                        <thead>
-                            <tr>
-                                <th>SUN</th>
-                                <th>MON</th>
-                                <th>TUE</th>
-                                <th>WED</th>
-                                <th>THU</th>
-                                <th>FRI</th>
-                                <th>SAT</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td className="sunday">2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                                <td>7</td>
-                                <td className="saturday">1</td>
-                            </tr>
-                            <tr>
-                                <td className="sunday">9</td>
-                                <td>10</td>
-                                <td>11</td>
-                                <td>12</td>
-                                <td>13</td>
-                                <td>14</td>
-                                <td className="saturday">15</td>
-                            </tr>
-                            <tr>
-                                <td className="sunday">16</td>
-                                <td>17</td>
-                                <td>18</td>
-                                <td>19</td>
-                                <td>20</td>
-                                <td>21</td>
-                                <td className="saturday">22</td>
-                            </tr>
-                            <tr>
-                                <td className="sunday">23</td>
-                                <td>24</td>
-                                <td className="selected">25</td>
-                                <td>26</td>
-                                <td>27</td>
-                                <td>28</td>
-                                <td className="saturday">29</td>
-                            </tr>
-                            <tr>
-                                <td className="sunday">30</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div className="info-section">
-                    <div className="profile-placeholder"></div>
-                    <div className="info-details">
-                        <div className="info-item"></div>
-                        <div className="info-item"></div>
-                    </div>
-                </div>
-            </div>
+
+const User = () => {
+  const [userInfo, setUserInfo] = useState(null);
+  // const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedUserInfo = JSON.parse(localStorage.getItem('user'));
+  
+    if (!storedUserInfo) {
+      console.log("사용자 정보가 없습니다.");
+      // 필요한 경우, navigate를 통해 로그인 페이지로 이동하게 처리
+      // navigate('/login'); // 주석을 풀어서 사용할 수 있습니다.
+    } else {
+      setUserInfo(storedUserInfo); // 사용자 정보 상태에 저장
+    }
+  }, []);
+
+  return (
+    <div className="User-page">
+      <UserNavbar/>
+      
+      <div className='User-page-section'>
+        <div className='User-page-section-container'>
+        <div className='User-page-section-inpormation'>
+          <h2>공지사항</h2>
+          <div className='User-page-section-inpormation-title'>
+            aa
+          </div>
         </div>
-    );
+        </div>
+      </div>
+     
+    
+      
+
+ {/*
+      <div className="User-Right-Sidebar-Container">
+        <div className="Weather-widget">
+          <p className='Weather-title-Container'>서울특별시</p>
+          
+          <div className='User-Weather-section'>
+          <div className="User-weather-icon">🌤</div>
+          <p className='User-Weather-temperature'>23°C</p>
+          </div>
+
+          <div className='User-Weather-section2'>
+            
+          </div>
+
+        </div>
+        
+        <div className="schedule-widget">
+          <h3>일정</h3>
+          <div className="schedule-item">미팅 1</div>
+          <div className="schedule-item">미팅 2</div>
+        </div>
+      </div>  */}
+
+    </div>
+  );
 };
 
 export default User;

@@ -1,0 +1,121 @@
+.trip-map-container {
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.trip-map-container-box-img {
+   width: 100%;
+   height: 500px;
+
+ display: flex;
+}
+
+
+.trip-map-container-img {
+    height: 300px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.trip-map-section {
+    height: 700px;
+    position: relative;
+    border: solid 1px black;
+    display: flex;
+}
+
+.map-section {
+
+    flex: 1;
+    padding-right: 20px;
+}
+
+.map-image {
+    margin-left: 70px;
+    margin-top: 50px;
+    width: 85%;
+    height: 100%;
+    background-color: gray;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.location-info {
+    flex: 0.9;
+}
+
+.location-info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.city-names {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.city {
+    text-align: center;
+}
+
+.city h3 {
+    color: blue;
+    font-size: 20px;
+    margin-top: 5px;
+    border-bottom: 2px solid blue;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.recommendations {
+    margin-top: 40px;
+}
+
+.recommendations h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.trip-cards {
+    display: flex;
+    gap: 20px;
+}
+
+.trip-card {
+    position: relative;
+    width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.trip-card-image {
+    height: 150px;
+    background-color: #ddd;
+}
+
+.trip-card-content {
+    padding: 10px;
+    background-color: white;
+}
+
+.trip-card-content h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.trip-card-content p {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.trip-card-number {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 30px;
+    color: rgba(0, 0, 0, 0.1);
+}
