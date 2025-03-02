@@ -30,6 +30,8 @@ const Header = () => {
         setShowSubmenu(true); // 서브메뉴 전체 표시
     };
 
+
+    
     const handleMouseLeave = () => {
         timerRef.current = setTimeout(() => {
             setShowSubmenu(false);
