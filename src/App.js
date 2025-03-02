@@ -4,7 +4,6 @@ import Home from './page/Home';
 import './App.css';
 import Login from './page/Login';
 import Trip from './page/Trip';
-// import User from './page/User';
 import PrivateRoute from './components/Protected Route/Protected';
 import Calendars from './page/Schedule/Calendars';
 import UserFAQ from './page/UserFAQ/UserFAQ';
@@ -16,25 +15,27 @@ import TripMap from './page/TripMap/TripMap';
 import WeatherApp from './page/WeatherPage/WeatherApp';
 import Tripsub from './page/MapPage/Tripsub/Tripsub';
 
+import Main from './page/Main';
+
 
 
 
 const App = () => {
-        
+
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Main/>} />
+                <Route path="/d" element={<Home />} />
                 <Route path='/Login' element={<Login />} />
                 <Route path='/Trip' element={<Trip />} />
-                <Route path='/TripMap' element={<TripMap />}/>
+                <Route path='/TripMap' element={<TripMap />} />
                 <Route path='/Tripsub' element={<Tripsub />} />
                 <Route path='/User/Setting' element={
-                     <PrivateRoute> <Setting/></PrivateRoute>}/>  
-
-                <Route path='/User/FAQ' element={<UserFAQ/>} />
-                <Route path='/User/Calendars' element={<Calendars/>}/>    
-                {/* <Route path='/User/Setting' element={<Setting/>}/> */}
+                    <PrivateRoute> <Setting /></PrivateRoute>} />
+                <Route path='/User/FAQ' element={<UserFAQ />} />
+                <Route path='/User/Calendars' element={<Calendars />} />
+                <Route path='/User/Setting' element={<Setting />} />
                 <Route path='/Join' element={<Join />} />
                 <Route path='/Join/step2' element={<JoinStep2 />} />
                 <Route path='/Weather' element={<WeatherApp />} />
