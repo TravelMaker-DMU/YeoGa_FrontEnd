@@ -3,10 +3,10 @@ import Navbar from "../Layout/Header";
 import Footer from "../components/Footer/Footer";
 import '../styles/Login.css';
 import kakaoicon from "../images/icon/kakao-icon.png";
-import facebookicon from "../images/icon/facebook.png";
+// import facebookicon from "../images/icon/facebook.png";
 import naver from '../images/icon/naver-icon-style (1).png';
 import yega from '../images/aaa.png';
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState(''); // 이메일 상태 관리
@@ -113,6 +113,7 @@ const Login = () => {
                   <p>네이버 로그인</p>
                 </div>
               </div>
+
 
               <div className="kakao-box">
                 <img src={kakaoicon} alt="Kakao" className="kakao" />
