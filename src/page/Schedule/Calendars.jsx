@@ -42,6 +42,7 @@ const Calendars = () => {
   const [showModal, setShowModal] = useState(false);
   const [newEvent, setNewEvent] = useState({ title: '', date: '', startTime: '', endTime: ''  });
 
+  
   const handleAddEvent = () => {
     const { title, date, startTime, endTime } = newEvent;
     if (title && date && startTime && endTime) {

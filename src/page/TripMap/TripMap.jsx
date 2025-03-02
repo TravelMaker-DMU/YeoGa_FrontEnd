@@ -1,6 +1,6 @@
 import React from "react";
 import '../TripMap/TripMap.css';
-import Navbar from "../../components/Navbar";
+import Navbar from "../../Layout/Header";
 import image31 from '../../images/image 31.png';
 // import "../styles/TripMap.css"; 
 

@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import Navbar from '../components/Navbar';
+import React, { useState, useEffect } from 'react';
+import Navbar from '../Layout/Header';
 import Footer from '../components/Footer/Footer';
 import axios from 'axios';
 import '../styles/Trip.css';
@@ -11,14 +11,14 @@ const Trip = () => {
     const [hotels, setHotels] = useState([]);  // State to store hotel data
     const [error, setError] = useState(null);
 
-  useEffect(() => {
+    useEffect(() => {
         const fetchHotels = async () => {
             try {
                 const serviceKey = process.env.REACT_APP_API_KEY_openapi;
                 const response = await axios.get("http://apis.data.go.kr/B551011/KorService1/searchStay1", {
                     params: {
                         serviceKey: serviceKey,
-                        numOfRows: 10, 
+                        numOfRows: 10,
                         pageNo: 2,
                         MobileOS: 'ETC',
                         MobileApp: 'AppTest',
@@ -27,12 +27,12 @@ const Trip = () => {
                         arrange: 'O',
                     }
                 });
-                
+
                 if (response.data.response.body.items.item) {
                     setHotels(response.data.response.body.items.item);
                     const shuffledHotels = response.data.response.body.items.item.sort(() => Math.random() - 0.5);
                     setHotels(shuffledHotels);
-                    
+
                 } else {
                     setError("데이터를 불러오지 못했습니다.");
                 }
@@ -44,17 +44,17 @@ const Trip = () => {
 
         fetchHotels();
     }, []);  // Empty dependency array to fetch only once on mount
-    
+
     return (
         <div className="trip-page">
-            <Navbar/>
+            <Navbar />
             <div className='trip-image'>
-                <img src={tripimg} alt=""  className='trip-img'/>
+                <img src={tripimg} alt="" className='trip-img' />
             </div>
-         
+
 
             <div className="main-content">
-        
+
 
                 <div className="filters">
                     <div className="filter-category">
@@ -118,7 +118,7 @@ const Trip = () => {
                                 <input type="checkbox" id="5stars" />
                                 <label htmlFor="5stars">5성급</label>
                             </li>
-                            <li> 
+                            <li>
                                 <input type="checkbox" id="4stars" />
                                 <label htmlFor="4stars">4성급</label>
                             </li>
@@ -162,17 +162,17 @@ const Trip = () => {
                         </ul>
                     </div>
                 </div>
-         
+
                 <div className="hotels">
-                <h2>BEST HOTEL</h2>         
+                    <h2>BEST HOTEL</h2>
                     <div className="hotel-grid">
                         {hotels.length > 0 ? (
                             hotels.map((hotel, index) => (
                                 <div key={index} className="hotel-card">
-                                    <img 
-                                        src={hotel.firstimage || "https://via.placeholder.com/150"} 
-                                        alt={hotel.title || "Hotel"} 
-                                        className="hotel-image" 
+                                    <img
+                                        src={hotel.firstimage || "https://via.placeholder.com/150"}
+                                        alt={hotel.title || "Hotel"}
+                                        className="hotel-image"
                                     />
                                     <div className="hotel-info">
                                         <h4>{index + 1}. {hotel.title}</h4>
@@ -187,7 +187,7 @@ const Trip = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 };
