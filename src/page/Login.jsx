@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../Layout/Header";
 import Footer from "../components/Footer/Footer";
 import '../styles/Login.css';
 import kakaoicon from "../images/icon/kakao-icon.png";

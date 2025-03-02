@@ -52,7 +52,7 @@ const UserNavbar = () => {
 
   // 각 메뉴에 대응하는 경로 설정
   const navItems = [
-    { icon: home, label: '홈', path: '/' },
+    { icon: home, label: '홈', path: '/'},
     { icon: Reservation, label: '일정'},
     { icon: bookmark, label: '북마크' },
     { icon: calander, label: '캘린더', path: '/User/Calendars' },

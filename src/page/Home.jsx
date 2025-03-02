@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
+import Header from '../Layout/Header';
 import ImageSlider from '../components/ImageSlider';
 import GridLayout from '../components/GridLayout';
 import TripCourse from '../components/TripCourse';
@@ -13,7 +13,8 @@ const Home = () => {
     
     return (
         <div className="home">
-            <Navbar />
+            <Header />
+
             <ImageSlider/>
     
              <GridLayout/>
