@@ -3,11 +3,9 @@ import { Link } from 'react-router-dom';
 
 import './Navbar.css';
 import { useNavigate } from 'react-router-dom';
-
-
+import { FaRegUser } from "react-icons/fa6";
 
 import aaa from '../images/aaa.png'
-import user from '../images/icon/icons8-user-96.png';
 
 
 const Header = () => {
@@ -31,7 +29,7 @@ const Header = () => {
     };
 
 
-    
+
     const handleMouseLeave = () => {
         timerRef.current = setTimeout(() => {
             setShowSubmenu(false);
@@ -39,12 +37,20 @@ const Header = () => {
     };
 
     return (
-        <nav className='flex items-center absolute w-full justify-between h-[75px] text-white bg-black/50 backdrop-blur-md px-3'>
-            <div className="w-[20%] h-[75px] bg-red-50">
-                <Link to="/"><img src={aaa} alt="logo" className="w-[150px] h-[75px]" /> </Link>
+        <nav className=' w-full justify-between h-[130px] text-white bg-black/50 backdrop-blur-md '>
+            <div className='flex w-full h-[60%] bg-slate-600 px-20'>
+                <div className="w-[20%] h-[75px] bg-slate-200">
+                    <Link to="/"><img src={aaa} alt="logo" className="w-[150px] h-[75px]" /> </Link>
+                </div>
+                <div className=''></div>
+                <div className='w-[10px]'>
+                    <FaRegUser />
+                </div>
             </div>
 
-            <ul className="nav-links"
+
+
+            {/* <ul className="nav-links"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
@@ -78,13 +84,8 @@ const Header = () => {
                         </div>
                     </ul>
                 </div>
-            )}
-            <div className='user-right'>
-                <div className='user-icon'>
-                    <img src={user} onClick={userPageClick}></img>
-                </div>
-                <button className="login-btn" onClick={handleLoginClick}>로그인</button>
-            </div>
+            )} */}
+
         </nav>
     );
 };
